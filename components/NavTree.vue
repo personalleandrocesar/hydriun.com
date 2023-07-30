@@ -1,13 +1,20 @@
 <template>
-    <div class='nav'>
-        <div>
-            <div>
-              <nav>
-                <NuxtLink to="/projetos/ativos">PROJETOS</NuxtLink>
-                <NuxtLink to="/sobre">SOBRE</NuxtLink>
-              </nav>
-            </div>
+    <div>
+            
+      <div>
+        <nav>
+          <NuxtLink to="/projetos/ativos">PROJETOS</NuxtLink>
+          <NuxtLink to="/sobre">SOBRE</NuxtLink>
+        </nav>
+      </div>
+
+      <div>
+        <div class="nav">
+          <NuxtLink to="/">INÍCIO</NuxtLink>
         </div>
+      </div>
+
+
     </div>
 
 </template>
@@ -35,6 +42,21 @@ nav {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   z-index: 2;
+}
+.nav {
+  font-family: 'Nirequa';
+  font-size: 12px;
+   display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: center;
+  padding: 15px 0 ;
+  position: fixed;
+  bottom: .1px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 2;
+  border-radius: 50px;
 }
 
 nav a {
