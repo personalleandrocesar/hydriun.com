@@ -43,7 +43,6 @@
 </template>
 
 <style scoped>
-
 @font-face {
   font-family: "naston-regular";
   src: url('~/assets/naston-regular.ttf') format('truetype');
@@ -66,20 +65,14 @@ code {
   border-left: solid 5px var(--color-text);
 }
 
-.main {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  color: var(--color-text);
-}
-
 .main-two {
+  font-family: 'Nirequa';
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   margin: -10px 0 -20px 0;
   overflow-x: auto;
-  color: var(--color-text);
+  color: var(--color-head);
 }
 
 .main-two i {
@@ -94,11 +87,11 @@ code {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin: 0px 0 0 0;
+  margin: 0px 0 200px 0;
   flex-wrap: wrap;
-  background-color: var(--color-background);
   overflow-x: auto;
-  font-family: "naston-regular";
+  font-family: 'naston-regular';
+  color: var(--color-text);
 }
 
 .main-tree img {
@@ -116,6 +109,7 @@ code {
   transition: all .4s linear;
   text-align: center;
   line-height: normal;
+  color: var(--color-text);
 }
 
 .main-tree h5:nth-child(1) {
@@ -125,7 +119,7 @@ code {
 
 .main-tree h5 {
   margin: 0px 10px 0px 10px;
-  color: #53dd8393;
+  color: var(--color-head);
   font-size: .8em;
 }
 

@@ -15,16 +15,6 @@ useHead({
     </div>
   </header>
   <TheWelcome/>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
 </template>
 
 <style scoped>
@@ -72,7 +62,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-      color: var(--color-text);
+      color: var(--color-detail);
 }
 
 h3{

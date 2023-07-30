@@ -1,25 +1,18 @@
 /* color palette from <https://github.com/vuejs/theme> */
 
+/* WHITE */
 :root {
   --vt-c-white: #c7cad0;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
-
-  --vt-c-black: #333333;
-  --vt-c-black-soft: #dddddd40;
-  --vt-c-black-mute: #282828;
-
-  --vt-c-indigo: #333333;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: hsla(0,0%,86.7%,.8);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  
+  --vt-c-white-soft: #ddddddcc;
+  --vt-c-white-mute: #ddd;
+  --vt-c-divider-light-1: var(--vt-c-white-soft);
+  --vt-c-divider-light-2: var(--vt-c-white-mute);
+  --vt-c-text-light-1: #333333;
+  --vt-c-text-light-2: #33333380;
+  --vt-c-text-light-3: #33333380;
+  --vt-c-text-light-4: #33333340;
+  --vt-c-text-light-5: #33333320;
 }
 
 /* semantic color variables for this project */
@@ -28,13 +21,27 @@
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
 
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
+  --color-border: var(--vt-c-divider-light-1);
+  --color-border-hover: var(--vt-c-divider-light-2);
 
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-2);
+  --color-a: var(--vt-c-text-light-1);
+  --color-head: var(--vt-c-text-light-2);
+  --color-text: var(--vt-c-text-light-3);
+  --color-detail: var(--vt-c-text-light-4);
+  --color-hover: var(--vt-c-text-light-5);
 
   --section-gap: 160px;
+}
+
+/* BLACK */
+:root {
+  --vt-c-black: #333333;
+  --vt-c-black-soft: #33333360;
+  --vt-c-black-mute: #33333340;
+  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --vt-c-divider-dark-2: hsla(0, 0%, 86.7%, .8);
+  --vt-c-text-dark-1: var(--vt-c-white);
+  --vt-c-text-dark-2: var(--vt-c-white-soft);
 }
 
 @media (prefers-color-scheme: dark) {

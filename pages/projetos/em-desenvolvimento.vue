@@ -34,7 +34,7 @@
 @font-face {
   font-family: "naston-regular";
   src: url('~/assets/naston-regular.ttf') format('truetype');
-} 
+}
 
 i {
   color: var(--color-text);
@@ -53,20 +53,14 @@ code {
   border-left: solid 5px var(--color-text);
 }
 
-.main {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  color: var(--color-text);
-}
-
 .main-two {
+  font-family: 'Nirequa';
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   margin: -10px 0 -20px 0;
   overflow-x: auto;
-  font-family: "naston-regular";
+  color: var(--color-head);
 }
 
 .main-two i {
@@ -81,10 +75,11 @@ code {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin: 0px 0 0 0;
+  margin: 0px 0 200px 0;
   flex-wrap: wrap;
-  background-color: var(--color-background);
   overflow-x: auto;
+  font-family: 'naston-regular';
+  color: var(--color-text);
 }
 
 .main-tree img {
@@ -102,6 +97,7 @@ code {
   transition: all .4s linear;
   text-align: center;
   line-height: normal;
+  color: var(--color-text);
 }
 
 .main-tree h5:nth-child(1) {
@@ -111,7 +107,7 @@ code {
 
 .main-tree h5 {
   margin: 0px 10px 0px 10px;
-  color: #53dd8393;
+  color: var(--color-head);
   font-size: .8em;
 }
 
@@ -149,11 +145,38 @@ code {
   transform: translateY(0.8em);
   box-shadow: 0 5px 5px #999;
 }
-.main-tree .tribo:hover {
+
+.main-tree .personal:hover {
+  box-shadow: 0 5px 5px #fadb41;
+  border: solid 1px #fadb41;
+}
+
+.personal:hover h4 {
+  text-shadow: 0 1px 1px #fadb41;
+}
+
+.main-tree .deep:hover {
+  box-shadow: 0 5px 5px #e23a28;
+  border: solid 1px #e23a28;
+}
+
+.deep:hover h4 {
+  text-shadow: 0 1px 1px #e23a28;
+}
+
+.main-tree a:hover:nth-child(3) {
+  box-shadow: 0 5px 5px #53dd84;
+}
+
+.main-tree a:hover:nth-child(3) h4 {
+  text-shadow: 0 1px 1px #53dd84;
+}
+
+.main-tree a:hover:nth-child(4) {
   box-shadow: 0 5px 5px #c07b4f;
 }
 
-.tribo:hover h4 {
+.main-tree a:hover:nth-child(4) h4 {
   text-shadow: 0 1px 1px #c07b4f;
 }
 
@@ -180,5 +203,4 @@ code {
   .main-tree-card {
     width: 90%;
   }
-}
-</style>
+}</style>
