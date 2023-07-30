@@ -31,7 +31,6 @@ nav {
   padding: 15px 0;
   position: sticky;
   top: .1px;
-  background: hsla(0, 0%, 86.7%, .8);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   z-index: 2;
