@@ -32,7 +32,7 @@ nav {
   position: sticky;
   top: .1px;
   -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(50px);
   z-index: 2;
 }
 
