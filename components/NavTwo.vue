@@ -36,7 +36,7 @@ nav {
   background: hsla(0,0%,86.7%,.8);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  z-index: 2;
+  z-index: 1;
 }
 
 nav a {

@@ -1,107 +1,85 @@
 <template>
-  <div class='anima'>
-    <div class='main'>
-        <h5>
-            <i class="fa-solid fa-diagram-project"></i> Projetos
-        </h5>
+  <div class='nav'>
+    <div>
+      <div>
+        <nav>
+          <NuxtLink to="/projetos/">ativos</NuxtLink>
+          <NuxtLink to="/projetos/em-desenvolvimento">em desenvolvimento</NuxtLink>
+        </nav>
+      </div>
     </div>
-
-    <div class='main-two'>
-        <h5><NuxtLink to="/projetos/ativos"><i class="fa-solid fa-bars-progress"></i> Projetos Ativos</NuxtLink></h5>
-        <h5><NuxtLink to="/projetos/em-desenvolvimento"><i class="fa-solid fa-layer-group"></i> Projetos Em desenvolvimento</NuxtLink></h5>
-    </div>
-
-    <NuxtPage/>
-
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
   </div>
 </template>
 <style scoped>
-body {
-  background: #fff;
-  font-family: 'Philosopher', sans-serif;
-  color: #aaa;
-  line-height: 1.6;
+h1 {
+  padding: 0 48px;
+  width: 100%;
+  font-size: 3rem;
 }
 
-iframe {
-  margin-left: 10px;
-}
-
-i {
-  color: var(--color-background);
-  font-size: .9em;
-  margin: auto;
-}
-
-code {
-  font-size: 0.6em;
-  margin-left: 15px;
-  padding-left: 10px;
-  border-left: solid 5px #eee;
-  color:#888;
-}
-.main h5 {
-
+h3 {
   color: var(--color-text);
+  margin-top: -1rem;
 }
 
-.main {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: collumn;
-  margin: -10px 0 -20px 0;
-  color: #555;
-  overflow-x:auto;
+nav {
+  font-family: 'Nirequa';
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  padding: 15px 0;
+  position: sticky;
+  top: .1px;
+  background: hsla(0, 0%, 86.7%, .8);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 2;
 }
 
-.main i {
-  font-size: 1.2em;
+nav a {
   color: var(--color-text);
+  font-weight: bold;
+  font-size: .9rem;
 }
 
-.main h5{
-  margin-left: 10px;
+nav a:hover {
+  color: #33333320;
 }
 
-.main-two {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 30px 0 0 0;
-  overflow-x:auto;
+nav a.router-link-exact-active {
+  color: #333;
 }
 
-.main-two i {
-  font-size: 1.2em;
-  color: #555;
+nav a {
+  display: inline-block;
+  padding: 0 1rem;
 }
 
-.main-two h5{
-  margin: 10px;
-}
-
-.main-two a {
- border: solid 1px #00bd7e30;
-  width: 100px;
-  padding: 7px;
-border-radius: 3% 3% 3% 3%;
-transition: all .4s linear;
-}
-.main-two i {
-  color: #aaa;
-  transition: all .4s linear;
-}
-
-.main-two a {
-  color: var(--color-text);
-}
-.main-two a.router-link-exact-active {
-  color: #00bd7e;
-}
-.main-two a.router-link-exact-active:hover  {
-   background-color: #00bd7e54;
-  color: var(--color-text);
+nav a:first-of-type {
+  border: 0;
 }
 </style>

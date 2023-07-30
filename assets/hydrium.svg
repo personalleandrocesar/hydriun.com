@@ -2,13 +2,12 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="266.98944mm"
-   height="27.229023mm"
-   viewBox="0 0 266.98944 27.229023"
+   width="273mm"
+   height="70.844002mm"
+   viewBox="0 0 273 70.844002"
    version="1.1"
    id="svg5"
    sodipodi:docname="hydrium.svg"
-   inkscape:dataloss="true"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    inkscape:export-filename="hydrium.svg"
    inkscape:export-xdpi="96"
@@ -30,8 +29,8 @@
      showgrid="false"
      showguides="false"
      inkscape:zoom="0.49353255"
-     inkscape:cx="482.2377"
-     inkscape:cy="-87.126979"
+     inkscape:cx="532.89292"
+     inkscape:cy="52.681429"
      inkscape:window-width="1366"
      inkscape:window-height="699"
      inkscape:window-x="0"
@@ -43,15 +42,14 @@
   <g
      inkscape:label="Camada 1"
      inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-2.9334848,-22.617848)">
+     id="layer1">
     <text
        xml:space="preserve"
        style="font-size:45.3062px;line-height:1.25;font-family:Nirequa;-inkscape-font-specification:Nirequa;stroke-width:0.707911"
        x="2.9334848"
        y="49.801567"
        id="text3092"
-       inkscape:export-filename="./text3092.svg"
+       inkscape:export-filename="hydrium.svg"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
