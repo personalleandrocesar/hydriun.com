@@ -14,9 +14,9 @@
 <style scoped>
 
 h1{
-padding: 0 48px;
-    width: 100%;
-    font-size: 3rem;
+  padding: 0 48px;
+  width: 100%;
+  font-size: 3rem;
 }
 
 h3{
