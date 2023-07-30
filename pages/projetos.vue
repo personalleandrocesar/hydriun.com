@@ -20,6 +20,7 @@
             desajeitados que abrangem dois mundos.</p> 
           <br>
         </div>
+        <hr>
           <nav>
           <NuxtLink to="/projetos">ativos</NuxtLink>
           <NuxtLink to="/projetos/em-desenvolvimento">em desenvolvimento</NuxtLink>
