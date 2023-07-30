@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <NavTree/>
+    <NavTwo/>
     <div class='anima'>
       <Sobre />
     </div>

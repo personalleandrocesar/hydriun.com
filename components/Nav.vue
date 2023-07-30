@@ -3,7 +3,7 @@
         <div>
             <div>
               <nav>
-                <NuxtLink to="/projetos/ativos">PROJETOS</NuxtLink>
+                <NuxtLink to="/projetos">PROJETOS</NuxtLink>
                 <NuxtLink to="/sobre">SOBRE</NuxtLink>
               </nav>
             </div>

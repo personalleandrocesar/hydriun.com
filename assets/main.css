@@ -5,6 +5,31 @@
   font-weight: normal;
 }
 
+@font-face {
+  font-family: 'naston-regular';
+  src: url('~/assets/naston-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nirequa';
+  src: url('~/assets/Nirequa.otf') format('opentype');
+}
+
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-size: 15px;
+  font-family: "Nirequa";
+}
+
+p {
+  font-size: 15px;
+}
+
 a,
 .green {
   text-decoration: none;

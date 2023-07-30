@@ -3,11 +3,6 @@
 <template>
 
     <div class='anima'>
-   <div class='main-two'>
-          <div>
-            <h5><i class="fa-solid fa-bars-progress"></i> Projetos atuais</h5>
-          </div>
-        </div>
 
 
         <div class='main-tree'>

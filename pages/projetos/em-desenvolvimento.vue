@@ -2,12 +2,6 @@
 <template>
   <div class='anima'>
 
-    <div class='main-two'>
-      <div>
-        <h5><i class="fa-solid fa-layer-group"></i> Projetos em Desenvolvimento</h5>
-      </div>
-    </div>
-
     <div class='main-tree'>
 
 
