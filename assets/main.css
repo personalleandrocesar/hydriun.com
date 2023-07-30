@@ -1,0 +1,99 @@
+@import './base.css';
+
+
+#app {
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: #333333;
+  transition: 0.4s;
+}
+
+.anima {
+  animation-direction: top;
+  animation: opacityAnimation 1s;
+}
+
+
+@keyframes opacityAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes lightOnAnimation {
+  0% {
+    color: #85ebd9;
+  }
+
+  50% {
+    color: var(--color-text);
+  }
+
+  100% {
+    color: hsla(160, 100%, 37%, 1);
+  }
+}
+
+.lightOnAnimationOne {
+  animation-direction: left;
+  animation: 2s infinite lightOnAnimation;
+  animation-delay: 8s;
+}
+
+.logoAnimationOne {
+  animation-direction: top;
+  animation: opacityAnimation 2s;
+}
+
+.logoAnimationTwo {
+  animation-direction: top;
+  animation: opacityAnimation 4s;
+}
+
+.logoAnimationTree {
+  animation-direction: top;
+  animation: opacityAnimation 6s;
+}
+
+.logoAnimationFour {
+  animation-direction: top;
+  animation: opacityAnimation 8s;
+}
+
+.logoAnimationFive {
+  animation: opacityAnimation 10s;
+}
+
+.logoAnimationSix {
+  animation-direction: top;
+  animation: opacityAnimation 12s;
+}
+
+.logoAnimationSeven {
+  animation-direction: top;
+  animation: opacityAnimation 12s;
+}
+
+.logoAnimationSevenTwo {
+  animation-direction: top;
+  animation: opacityAnimation 40s;
+}
+
+.lightOnAnimationSeven {
+  animation-direction: left;
+  animation: 3s infinite lightOnAnimation;
+  animation-delay: 5s;
+}
+
+.homeAnimation {
+  animation-direction: top;
+  animation: opacityAnimation 5s;
+}
