@@ -1,20 +1,13 @@
 <template>
-    <div>
+    <div class='nav'>
             
       <div>
         <nav>
+          <NuxtLink to="/">INÍCIO</NuxtLink>
           <NuxtLink to="/projetos/ativos">PROJETOS</NuxtLink>
           <NuxtLink to="/sobre">SOBRE</NuxtLink>
         </nav>
       </div>
-
-      <div>
-        <div class="nav">
-          <NuxtLink to="/"><Icon name="material-symbols:home-app-logo"/></NuxtLink>
-        </div>
-      </div>
-
-
     </div>
 
 </template>
@@ -42,19 +35,6 @@ nav {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   z-index: 2;
-}
-.nav {
-  margin: auto;
-  font-family: 'Nirequa';
-  padding: 5px;
-  position: fixed;
-  bottom: 1px;
-  left: 45%;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  z-index: 2;
-  border-radius: 50px;
-  zoom: .7;
 }
 
 nav a {
