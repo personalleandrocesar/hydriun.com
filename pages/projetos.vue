@@ -29,24 +29,7 @@
     <NuxtPage />
 </template>
 <style scoped>
-h1 {
-  padding: 0 48px;
-  width: 100%;
-  font-size: 3rem;
-}
 
-h3 {
-  padding: 0px 20px 0 20px;
-  color: var(--color-text);
-  text-align: left;
-}
-
-p {
-  font-family: 'naston-regular';
-  padding: 0 20px;
-  color: var(--color-text);
-  text-align: left;
-}
 
 .nav div {
   font-family: 'Nirequa';

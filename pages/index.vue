@@ -14,7 +14,7 @@ useHead({
 
     </div>
   </header>
-  <TheWelcome/>
+  <Home/>
 </template>
 
 <style scoped>
