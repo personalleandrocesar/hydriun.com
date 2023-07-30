@@ -35,7 +35,7 @@ h1 {
 }
 
 h3 {
-  padding: 30px 20px 0 20px;
+  padding: 0px 20px 0 20px;
   color: var(--color-text);
   text-align: left;
 }
@@ -52,7 +52,7 @@ nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
-  padding: 70px 0 0 0;
+  margin: 100px 0 0 0;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(50px);
   z-index: 2;
