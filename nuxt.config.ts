@@ -5,13 +5,9 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      link: [
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Philosopher&display=swap' },
-        { rel: 'stylesheet', href: 'https://kit.fontawesome.com/da2962ce7f.js' }
-     ],
       meta: [
-        { name: 'theme-color', content: '#fff' },
-        { name: 'theme-color', content: '#fff' },
+        { name: 'theme-color', content: '#33333340' },
+        { name: 'theme-color', content: '#33333340' },
       ],
       noscript: [
         // <noscript>JavaScript is required</noscript>
