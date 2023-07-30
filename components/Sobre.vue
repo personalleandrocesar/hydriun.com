@@ -1,5 +1,5 @@
 <template>
-  <div class="logoAnimationOne">
+  <div class="logoAnimationOne font">
 
     <div class='main-tree'>
       <div>
@@ -423,6 +423,14 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  src: url('~/assets/naston-regular.ttf') format('truetype');
+} 
+
+.font {
+  font-family: "naston-regular" ;
+}
+
 body {
   font-family: 'Philosopher', sans-serif;
   color: var(--color-text);
@@ -623,7 +631,7 @@ code {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  margin: 20px 0 0 0;
+  margin: 60px 0 0 0;
   color: var(--color-text);
   overflow-x: auto;
 }

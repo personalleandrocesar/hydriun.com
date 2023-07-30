@@ -43,6 +43,11 @@
 </template>
 
 <style scoped>
+
+@font-face {
+  src: url('~/assets/naston-regular.ttf') format('truetype');
+}
+
 i {
   color: var(--color-text);
   font-size: .9em;
@@ -92,6 +97,7 @@ code {
   flex-wrap: wrap;
   background-color: var(--color-background);
   overflow-x: auto;
+  font-family: "naston-regular";
 }
 
 .main-tree img {

@@ -28,7 +28,13 @@
     </div>
   </div>
 </template>
+
+
 <style scoped>
+@font-face {
+  src: url('~/assets/naston-regular.ttf') format('truetype');
+} 
+
 i {
   color: var(--color-text);
   font-size: .9em;
@@ -59,6 +65,7 @@ code {
   flex-direction: column;
   margin: -10px 0 -20px 0;
   overflow-x: auto;
+  font-family: "naston-regular";
 }
 
 .main-two i {
