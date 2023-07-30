@@ -32,6 +32,7 @@
 
 <style scoped>
 @font-face {
+  font-family: "naston-regular";
   src: url('~/assets/naston-regular.ttf') format('truetype');
 } 
 

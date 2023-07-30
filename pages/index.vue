@@ -15,6 +15,16 @@ useHead({
     </div>
   </header>
   <TheWelcome/>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 </template>
 
 <style scoped>
