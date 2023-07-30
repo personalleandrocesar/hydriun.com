@@ -47,10 +47,6 @@
   src: url('~/assets/naston-regular.ttf') format('truetype');
 }
 
-body{
-    font-family: 'naston-regular'
-}
-
 i {
   color: var(--color-text);
   font-size: .9em;
@@ -77,7 +73,7 @@ code {
 }
 
 .main-two {
-  font-family: 'naston-regular';
+  font-family: 'Nirequa';
   display: flex;
   justify-content: flex-start;
   flex-direction: column;

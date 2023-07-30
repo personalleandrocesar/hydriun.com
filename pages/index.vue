@@ -33,7 +33,7 @@ useHead({
 
 .logo{
 margin: 0 auto;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
@@ -49,7 +49,6 @@ margin-bottom: 64px;
 -webkit-animation: updown 3s ease infinite;
 animation: updown 3s ease infinite;
 height: 60px;
-font-size: 7rem;
 zoom: 0.7;
 }
 
