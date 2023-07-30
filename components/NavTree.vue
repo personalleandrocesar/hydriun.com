@@ -10,7 +10,7 @@
 
       <div>
         <div class="nav">
-          <NuxtLink to="/">INÍCIO</NuxtLink>
+          <NuxtLink to="/"><Icon name="material-symbols:home-app-logo"/></NuxtLink>
         </div>
       </div>
 
@@ -44,19 +44,17 @@ nav {
   z-index: 2;
 }
 .nav {
+  margin: auto;
   font-family: 'Nirequa';
-  font-size: 12px;
-   display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  text-align: center;
-  padding: 15px 0 ;
+  padding: 5px;
   position: fixed;
-  bottom: .1px;
+  bottom: 1px;
+  left: 45%;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   z-index: 2;
   border-radius: 50px;
+  zoom: .7;
 }
 
 nav a {

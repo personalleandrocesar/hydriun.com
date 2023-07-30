@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class='anima'>
+  <div>
     <NavTwo/>
   <Projetos/>
   <Index/>
