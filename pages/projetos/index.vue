@@ -24,7 +24,7 @@
             <h4>Personal <br> Leandro Cesar</h4>
 
             <div>
-              <img src='/img/myFotoTwo.jpg' alt='' class='mini-profile'>
+              <img src='/img/personalleandrocesar.png' alt='' class='mini-profile'>
             </div>
             <div>
               <h5>@personalleandrocesar</h5>
@@ -44,6 +44,26 @@
                 RJ e Atende em todo brasil</p>
             </div>
           </a>
+          <!-- <a href="https://isaarquitetura.vercel.app/" class='main-tree-card personal'>
+            <h4>Isadora Peçanha <br> Arquitetura</h4>
+            <iframe id="inlineFrameExample"
+      title="Inline Frame Example"
+      width="100"
+      height="100"
+      src="https://isaarquitetura.vercel.app">
+  </iframe>
+
+
+            <div>
+              <img src='/img/isaarquiteta.png' alt='' class='mini-profile isa'  >
+            </div>
+            <div>
+              <h5>@isadorapecanha_arquitetura</h5>
+              <p>Projetos | Consultoria
+               <br>
+                RJ e Atende em todo brasil</p>
+            </div>
+          </a> -->
         </div>
         
 
