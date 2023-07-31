@@ -176,7 +176,7 @@ code {
   transform: scale(0.97);
   transition: all .4s linear;
   transform: translateY(1em);
-  box-shadow: 0 0 0px var(--color-detail);
+  box-shadow: .5px .5px 6px var(--color-detailTwo);
 }
 
 .main-tree a:hover {
