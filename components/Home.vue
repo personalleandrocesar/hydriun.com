@@ -4,9 +4,12 @@
 
 
       <div class='main-two'>
-        <div>
-          <h5><i class="fa-solid fa-bars-progress"></i> WebSite | LandPages | Sistemas</h5>
-        </div>
+      
+        
+          <h2><Icon name="ic:baseline-circle" /> WebSites</h2>
+          <h2><Icon name="ic:baseline-circle" /> LandPages</h2>
+          <h2><Icon name="ic:baseline-circle" /> Sistemas</h2>
+        
       </div>
 
 
@@ -46,48 +49,36 @@
   src: url('~/assets/naston-regular.ttf') format('truetype');
 }
 
-i {
-  color: var(--color-text);
-  font-size: .9em;
-  margin: auto;
+.icon {
+  zoom: .1;
 }
 
-iframe {
-  margin-left: 10px;
-}
-
-code {
-  font-size: 0.5em;
-  margin-left: 15px;
-  padding-left: 10px;
-  border-left: solid 5px var(--color-text);
-}
 .main-two {
   font-family: 'Nirequa';
   display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
   margin: 80px 0 -20px 0;
   overflow-x:auto;
   color: var(--color-head);
 }
 
-.main-two i {
-  font-size: 1.2em;
-}
-
 .main-tree {
   display: flex;
   text-align: left;
+  flex-wrap: wrap;
   justify-content: center;
   flex-direction: row;
   margin: 40px 0 200px 0;
-  flex-wrap: wrap;
   overflow-x: auto;
-  font-family: 'naston-regular';
   color: var(--color-text);
 }
 
+.main-tree p{
+  font-family: 'naston-regular';
+  
+}
 .main-tree img {
   height: 70px;
   border-radius: 50%;

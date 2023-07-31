@@ -25,16 +25,23 @@ body {
   font-size: 15px;
   font-family: "Nirequa";
 }
+
 h1 {
   padding: 0 48px;
   width: 100%;
   font-size: 3rem;
 }
 
+h2 {
+  padding: 0 10px;
+    font-size: 17px;
+}
+
 h3 {
   padding: 0px 20px 0 20px;
   color: var(--color-text);
   text-align: left;
+  font-size: 17px;
 }
 
 .main-two h5 {
@@ -47,6 +54,7 @@ p {
   padding: 0 20px;
   color: var(--color-text);
   text-align: left;
+  font-size: 15px;
 }
 
 hr{
@@ -58,10 +66,6 @@ hr{
       padding: 0;
       border: 0;
       vertical-align: baseline;
-}
-
-p {
-  font-size: 15px;
 }
 
 a,
