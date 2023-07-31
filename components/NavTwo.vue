@@ -37,17 +37,17 @@ nav {
 }
 
 nav a {
-  color: var(--color-detail);
+  color: var(--color-title);
   font-weight: bold;
   font-size: .9rem;
 }
 
 nav a:hover {
-  color: var(--color-hover);
+  color: var(--color-detailTwo);
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-a);
+  color: var(--color-detail);
 }
 
 nav a {

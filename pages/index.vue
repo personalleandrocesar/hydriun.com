@@ -50,6 +50,7 @@ margin-bottom: 64px;
 animation: updown 3s ease infinite;
 height: 60px;
 zoom: 0.7;
+color: var(--color-detail);
 }
 
 h1{

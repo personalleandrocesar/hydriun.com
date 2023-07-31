@@ -182,7 +182,7 @@ code {
 .main-tree a:hover {
   background-color: var(--color-background-soft);
   transform: translateY(0.9em);
-  box-shadow: 0 5px 5px var(--color-detail);
+  box-shadow: 0 5px 5px var(--color-detailTwo);
 }
 
 .main-tree p {
