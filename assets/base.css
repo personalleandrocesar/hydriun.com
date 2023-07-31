@@ -62,9 +62,9 @@
     --color-border: var(--vt-c-divider-dark-2);
     --color-border-hover: var(--vt-c-divider-dark-1);
 --color-a: var(--vt-c-text-dark-1);
-  --color-head: var(--vt-c-text-dark-2);
+  --color-head: var(--vt-c-text-dark-6);
   --color-text: var(--vt-c-text-dark-3);
-  --color-title: var(--vt-c-text-dark-1);
+  --color-title: var(--vt-c-text-dark-3);
   --color-detail: var(--vt-c-text-dark-6);
   --color-detailTwo: var(--vt-c-text-dark-7);
   --color-hover: var(--vt-c-text-dark-5);
