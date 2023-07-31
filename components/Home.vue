@@ -15,22 +15,21 @@
 
       <div class='main-tree'>
   <div>
-            <h3>Humano</h3>
-            <p>Hydrium rejeita a metáfora da área de trabalho e os ecossistemas de aplicativos como fundamentalmente desumanos. 
-              Inspirado pelos princípios de Jef Raskin, Hydrium procura oferecer uma visão mais humana da interação humano-computador.</p> 
+            <h3>Personalizado</h3>
+            <p>Hydrium rejeita a metáfora que sites, trabalhos e sistemas, tem que ser tudo igual e desumano. 
+              <br>
+              A inspiração vem do gosto e do tipo de negócio do Empreendedor, micro e pequeno empresário.</p> 
             <br>
             <h3>Fluido</h3>
-            <p>Em vez de pedir às pessoas que modifiquem a maneira como pensam e agem nas caixas de areia arbitrárias dos aplicativos, a 
-              Hydrium responde com fluidez às necessidades e intenções de seu usuário.</p> 
+            <p>Com um toque organização e sutileza, Hidrium usa framworks, para deixar tudo mais fluido ao usuário.</p> 
             <br>
-            <h3>Focado</h3>
-            <p>A desordem que consideramos natural nos sistemas operacionais de hoje pode ser esmagadora, especialmente para pessoas 
-              sensíveis a estímulos. Hydrium respeita larguras de banda limitadas e períodos de atenção.</p> 
+            <h3>Responsivo</h3>
+            <p>Hydrium fornece um vislumbre nas responsividades, dexando tudo encaixado de acordo com os diferentes dispositivos.</p> 
             <br>
-            <h3>Familiar</h3>
-            <p>Hydrium fornece um vislumbre dos sistemas de amanhã usando paradigmas de interação familiares. Ele foi projetado para 
-              tablets multitoque com suporte para teclado, uma categoria de dispositivos geralmente negligenciada como híbridos 
-              desajeitados que abrangem dois mundos.</p> 
+            <h3>clean</h3>
+            <p>Com objetivo claro e real de destacar o que realmente importa.
+              <br> 
+              Divisões, textos e imagens são muito bem alinhados e pensados quando o layout é minimalista.</p> 
             <br>
           </div>
 
