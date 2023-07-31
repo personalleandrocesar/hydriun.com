@@ -1,7 +1,7 @@
 <template>
   <div class='nav'>
         <NavTwo/>
-        <div>
+        <div class="anima">
           <h3>Humano</h3>
           <p>Hydrium rejeita a metáfora da área de trabalho e os ecossistemas de aplicativos como fundamentalmente desumanos. 
             Inspirado pelos princípios de Jef Raskin, Hydrium procura oferecer uma visão mais humana da interação humano-computador.</p> 

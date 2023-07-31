@@ -1,16 +1,15 @@
 <template>
-    <div class='nav'>
-        <div>
-            <div>
-              <nav>
-                <NuxtLink to="/">INÍCIO</NuxtLink>
-                <NuxtLink to="/projetos">PROJETOS</NuxtLink>
-                <NuxtLink to="/sobre">SOBRE</NuxtLink>
-              </nav>
-            </div>
-        </div>
+  <div class='nav'>
+    <div>
+      <div>
+        <nav>
+          <NuxtLink to="/">INICIO</NuxtLink>
+          <NuxtLink to="/projetos">PROJETOS</NuxtLink>
+          <NuxtLink to="/sobre">SOBRE</NuxtLink>
+        </nav>
+      </div>
     </div>
-
+  </div>
 </template>
 <style scoped>
 h1 {

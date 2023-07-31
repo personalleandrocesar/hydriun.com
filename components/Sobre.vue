@@ -1,7 +1,7 @@
 <template>
   <div class='nav'>
     <NavTwo />
-    <div>
+    <div class="anima">
       <h3>Humano</h3>
       <p>Hydrium rejeita a metáfora da área de trabalho e os ecossistemas de aplicativos como fundamentalmente desumanos.
         Inspirado pelos princípios de Jef Raskin, Hydrium procura oferecer uma visão mais humana da interação
@@ -25,12 +25,7 @@
       <br>
     </div>
     <hr>
-    <nav>
-      <NuxtLink to="/projetos">ativos</NuxtLink>
-      <NuxtLink to="/projetos/em-desenvolvimento">em desenvolvimento</NuxtLink>
-    </nav>
   </div>
-  <NuxtPage />
 </template>
 <style scoped>
 .nav div {
