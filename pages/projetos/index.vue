@@ -1,39 +1,40 @@
 
 
 <template>
-  <div class='anima'>
+
+    <div class='anima'>
 
 
-    <div class='main-tree'>
+        <div class='main-tree'>
 
 
+          
+          <a href="https://deepacupuntura.com" class='main-tree-card deep'>
+            <h4>Deep Acupuntura</h4>
 
-      <a href="https://deepacupuntura.com" class='main-tree-card deep'>
+            <div>
+              <img src='/img/deep.jpg' alt='' class='mini-profile'>
+            </div>
+            <div>
+              <h5>@deepacupuntura</h5>
+              <p>Clínica particular de Medicina Chinesa</p>
+            </div>
+          </a>
+          <a href="https://personal.leandrocesar.com" class='main-tree-card personal'>
+            <h4>Personal Leandro Cesar</h4>
 
-        <div>
-          <img src='/img/deep.jpg' alt='' class='mini-profile'>
+            <div>
+              <img src='/img/myFotoTwo.jpg' alt='' class='mini-profile'>
+            </div>
+            <div>
+              <h5>@personalleandrocesar</h5>
+              <p>Personal trainer - Consultoria - Avaliação Física - Krav-maga</p>
+            </div>
+          </a>
         </div>
-        <div>
-          <h4>Deep Acupuntura</h4>
-          <h5>@deepacupuntura</h5>
-          <p>Clínica particular de Medicina Chinesa</p>
-        </div>
-      </a>
-      <a href="https://personal.leandrocesar.com" class='main-tree-card personal'>
 
-        <div>
-          <img src='/img/myFotoTwo.jpg' alt='' class='mini-profile'>
-        </div>
-        <div>
-          <h4>Personal<br>Leandro Cesar</h4>
-          <h5>@personalleandrocesar</h5>
-          <p>Personal trainer - Consultoria - Avaliação Física - Krav-maga</p>
-        </div>
-      </a>
+        <br>
     </div>
-
-    <br>
-  </div>
 </template>
 
 <style scoped>
@@ -90,7 +91,6 @@ code {
 
 .main-tree img {
   height: 70px;
-  border-radius: 50%;
 }
 
 .main-tree i {
@@ -136,54 +136,20 @@ code {
 
 
 .main-tree a {
-  border: solid 1px #00bd7e30;
+  border: solid 3px var(--color-background-mute);
   padding-bottom: 10px;
   margin: 0px 5px 20px 5px;
-  border-radius: 3% 3% 3% 3%;
+  border-radius: 20px;
   transform: scale(0.97);
   transition: all .4s linear;
   transform: translateY(1em);
-  box-shadow: 0 0 0px #ddd;
+  box-shadow: 0 0 0px var(--color-detail);
 }
 
 .main-tree a:hover {
-  background-color: var(--color-background);
-  transform: translateY(0.8em);
-  box-shadow: 0 5px 5px #999;
-}
-
-.main-tree .personal:hover {
-  box-shadow: 0 5px 5px #fadb41;
-  border: solid 1px #fadb41;
-}
-
-.personal:hover h4 {
-  text-shadow: 0 1px 1px #fadb41;
-}
-
-.main-tree .deep:hover {
-  box-shadow: 0 5px 5px #e23a28;
-  border: solid 1px #e23a28;
-}
-
-.deep:hover h4 {
-  text-shadow: 0 1px 1px #e23a28;
-}
-
-.main-tree a:hover:nth-child(3) {
-  box-shadow: 0 5px 5px #53dd84;
-}
-
-.main-tree a:hover:nth-child(3) h4 {
-  text-shadow: 0 1px 1px #53dd84;
-}
-
-.main-tree a:hover:nth-child(4) {
-  box-shadow: 0 5px 5px #c07b4f;
-}
-
-.main-tree a:hover:nth-child(4) h4 {
-  text-shadow: 0 1px 1px #c07b4f;
+  background-color: var(--color-background-soft);
+  transform: translateY(0.9em);
+  box-shadow: 0 5px 5px var(--color-detail);
 }
 
 .main-tree p {
@@ -199,15 +165,13 @@ code {
 
 .mini-profile {
   height: 25px;
-  border-radius: 50%;
-  margin: 10px 0 0 10px;
-  padding: 0 15px 0 0;
+  border-radius: 20px;
+  margin: 10px 10px;
 }
 
 
 @media only screen and (max-width: 382px) {
   .main-tree-card {
-    width: 90%;
+    width: 98%;
   }
-}
-</style>
+}</style>
