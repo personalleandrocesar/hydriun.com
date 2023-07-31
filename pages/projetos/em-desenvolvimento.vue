@@ -1,5 +1,6 @@
 
 <template>
+  <NavTwo />
   <div class='anima'>
 
     <div class='main-tree'>
