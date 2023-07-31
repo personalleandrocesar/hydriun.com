@@ -35,7 +35,7 @@
             <h4>Isadora Peçanha <br> Arquitetura</h4>
 
             <div>
-              <img src='/img/isaarquiteta.png' alt='' class='mini-profile isa' >
+              <img src='/img/isaarquiteta.png' alt='' class='mini-profile isa'  >
             </div>
             <div>
               <h5>@isadorapecanha_arquitetura</h5>
