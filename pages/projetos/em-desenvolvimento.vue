@@ -101,7 +101,7 @@ code {
 .main-tree h5 {
   margin: 0px 10px 0px 10px;
   color: var(--color-head);
-  font-size: .8em;
+  font-size: .6em;
 }
 
 .main-tree div {
@@ -134,9 +134,9 @@ code {
 }
 
 .main-tree a:hover {
-  background-color: var(--color-background-soft);
+  background-color: var(--color-background-mute);
   transform: translateY(0.9em);
-  box-shadow: 0 5px 5px var(--color-detail);
+  box-shadow: 0 5px 5px var(--color-detailTwo);
 }
 
 .main-tree p {
