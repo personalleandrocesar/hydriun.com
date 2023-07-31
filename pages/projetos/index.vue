@@ -10,7 +10,7 @@
 
           
           <a href="https://deepacupuntura.com" class='main-tree-card deep'>
-            <h4>Deep Acupuntura</h4>
+            <h4>Deep <br> Acupuntura</h4>
 
             <div>
               <img src='/img/deep.jpg' alt='' class='mini-profile'>
@@ -21,7 +21,7 @@
             </div>
           </a>
           <a href="https://personal.leandrocesar.com" class='main-tree-card personal'>
-            <h4>Personal Leandro Cesar</h4>
+            <h4>Personal <br> Leandro Cesar</h4>
 
             <div>
               <img src='/img/myFotoTwo.jpg' alt='' class='mini-profile'>
@@ -29,6 +29,19 @@
             <div>
               <h5>@personalleandrocesar</h5>
               <p>Personal trainer - Consultoria - Avaliação Física - Krav-maga</p>
+            </div>
+          </a>
+          <a href="https://isaarquitetura.vercel.app/" class='main-tree-card personal'>
+            <h4>Isadora Peçanha <br> Arquitetura</h4>
+
+            <div>
+              <img src='/img/isaarquiteta.png' alt='' class='mini-profile isa' >
+            </div>
+            <div>
+              <h5>@isadorapecanha_arquitetura</h5>
+              <p>Projetos | Consultoria
+               <br>
+                RJ e Atende em todo brasil</p>
             </div>
           </a>
         </div>
@@ -43,7 +56,6 @@
   font-family: "naston-regular";
   src: url('~/assets/naston-regular.ttf') format('truetype');
 }
-
 i {
   color: var(--color-text);
   font-size: .9em;
@@ -115,7 +127,7 @@ code {
 .main-tree h5 {
   margin: 0px 10px 0px 10px;
   color: var(--color-head);
-  font-size: .8em;
+  font-size: .6em;
 }
 
 .main-tree div {

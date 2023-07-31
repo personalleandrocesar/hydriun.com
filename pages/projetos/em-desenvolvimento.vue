@@ -8,12 +8,12 @@
 
 
                   <a href="https://triboalmaforte.com" class='main-five-card tribo'>
+                    <h4>Tribo <br> Alma forte</h4>
 
                     <div>
                       <img src='/img/tribo.jpg' alt='' class='mini-profile'>
                     </div>
                     <div>
-                      <h4>Tribo Alma forte</h4>
                       <h5>@triboalmaforte</h5>
                       <p>O corpo só é forte porque a alma é forte!</p>
                     </div>
@@ -22,7 +22,6 @@
     </div>
   </div>
 </template>
-
 
 <style scoped>
 @font-face {
@@ -69,7 +68,7 @@ code {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin: 0px 0 200px 0;
+  margin: 0px 0 300px 0;
   flex-wrap: wrap;
   overflow-x: auto;
   font-family: 'naston-regular';
@@ -78,7 +77,6 @@ code {
 
 .main-tree img {
   height: 70px;
-  border-radius: 50%;
 }
 
 .main-tree i {
@@ -119,59 +117,25 @@ code {
   border: solid 1px var(--color-text);
   border-radius: 3% 3% 3% 3%;
   align-items: center;
-  width: 44%;
+  width: 47%;
 }
 
 
 .main-tree a {
-  border: solid 1px #00bd7e30;
+  border: solid 3px var(--color-background-mute);
   padding-bottom: 10px;
   margin: 0px 5px 20px 5px;
-  border-radius: 3% 3% 3% 3%;
+  border-radius: 20px;
   transform: scale(0.97);
   transition: all .4s linear;
   transform: translateY(1em);
-  box-shadow: 0 0 0px #ddd;
+  box-shadow: 0 0 0px var(--color-detail);
 }
 
 .main-tree a:hover {
-  background-color: var(--color-background);
-  transform: translateY(0.8em);
-  box-shadow: 0 5px 5px #999;
-}
-
-.main-tree .personal:hover {
-  box-shadow: 0 5px 5px #fadb41;
-  border: solid 1px #fadb41;
-}
-
-.personal:hover h4 {
-  text-shadow: 0 1px 1px #fadb41;
-}
-
-.main-tree .deep:hover {
-  box-shadow: 0 5px 5px #e23a28;
-  border: solid 1px #e23a28;
-}
-
-.deep:hover h4 {
-  text-shadow: 0 1px 1px #e23a28;
-}
-
-.main-tree a:hover:nth-child(3) {
-  box-shadow: 0 5px 5px #53dd84;
-}
-
-.main-tree a:hover:nth-child(3) h4 {
-  text-shadow: 0 1px 1px #53dd84;
-}
-
-.main-tree a:hover:nth-child(4) {
-  box-shadow: 0 5px 5px #c07b4f;
-}
-
-.main-tree a:hover:nth-child(4) h4 {
-  text-shadow: 0 1px 1px #c07b4f;
+  background-color: var(--color-background-soft);
+  transform: translateY(0.9em);
+  box-shadow: 0 5px 5px var(--color-detail);
 }
 
 .main-tree p {
@@ -187,14 +151,14 @@ code {
 
 .mini-profile {
   height: 25px;
-  border-radius: 50%;
-  margin: 10px 0 0 10px;
-  padding: 0 15px 0 0;
+  border-radius: 20px;
+  margin: 10px 10px;
 }
 
 
 @media only screen and (max-width: 382px) {
   .main-tree-card {
-    width: 90%;
+    width: 98%;
   }
-}</style>
+}
+</style>
