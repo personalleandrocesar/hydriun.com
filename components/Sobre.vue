@@ -1,6 +1,5 @@
 <template>
   <div class='nav'>
-    <NavTwo />
     <div class="anima">
       <h3>Humano</h3>
       <p>Hydrium rejeita a metáfora da área de trabalho e os ecossistemas de aplicativos como fundamentalmente desumanos.
@@ -34,7 +33,7 @@
   font-size: 12px;
   text-align: center;
   -webkit-backdrop-filter: blur(10px);
-  padding: 0px 0 80px 0;
+  padding: 100px 0 0px 0;
   backdrop-filter: blur(50px);
   z-index: 2;
 }

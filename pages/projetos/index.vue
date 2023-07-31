@@ -1,7 +1,7 @@
 
 
 <template>
-
+    <NavTwo />
     <div class='anima'>
 
 
@@ -32,6 +32,7 @@
             </div>
           </a>
         </div>
+        
 
         <br>
     </div>
@@ -82,7 +83,7 @@ code {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin: 0px 0 200px 0;
+  margin: 0px 0 300px 0;
   flex-wrap: wrap;
   overflow-x: auto;
   font-family: 'naston-regular';
@@ -131,7 +132,7 @@ code {
   border: solid 1px var(--color-text);
   border-radius: 3% 3% 3% 3%;
   align-items: center;
-  width: 44%;
+  width: 47%;
 }
 
 

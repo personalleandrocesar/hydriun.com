@@ -1,6 +1,5 @@
 <template>
   <div class='nav'>
-        <NavTwo/>
         <div class="anima">
          <h3>Personalizado</h3>
               <p>Hydrium rejeita a metáfora que sites, trabalhos e sistemas, tem que ser tudo igual e desumano. 
@@ -36,8 +35,8 @@
   font-size: 12px;
   text-align: center;
   -webkit-backdrop-filter: blur(10px);
-  padding: 0px 0 80px 0;
   backdrop-filter: blur(50px);
+  padding: 100px 0px 0px 0;
   z-index: 2;
 }
 
