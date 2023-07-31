@@ -67,7 +67,7 @@ code {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  margin: -10px 0 -20px 0;
+  margin: 80px 0 -20px 0;
   overflow-x:auto;
   color: var(--color-head);
 }
