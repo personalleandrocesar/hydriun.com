@@ -33,9 +33,6 @@
             <br>
           </div>
 
-
-        <a href="https://deepacupuntura.com" class='main-tree-card deep'>
-        </a>
       </div>
 
       <br>
