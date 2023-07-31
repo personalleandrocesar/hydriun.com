@@ -51,17 +51,17 @@ nav {
 }
 
 nav a {
-  color: var(--color-text);
+  color: var(--color-title);
   font-weight: bold;
   font-size: .9rem;
 }
 
 nav a:hover {
-  color: #33333320;
+  color: var(--color-detailTwo);
 }
 
 nav a.router-link-exact-active {
-  color: #333;
+  color: var(--color-detail);
 }
 
 nav a {

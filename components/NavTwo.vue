@@ -40,6 +40,8 @@ nav a {
   color: var(--color-title);
   font-weight: bold;
   font-size: .9rem;
+  display: inline-block;
+  padding: 0 1rem;
 }
 
 nav a:hover {
@@ -48,11 +50,6 @@ nav a:hover {
 
 nav a.router-link-exact-active {
   color: var(--color-detail);
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
 }
 
 nav a:first-of-type {
