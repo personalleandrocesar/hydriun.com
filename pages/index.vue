@@ -8,8 +8,7 @@ useHead({
   <Nav/>
   <header>
     <div class='logo'>
-
-          <h1 class=''>Hydrium</h1>
+      <h1 class=''>Hydrium</h1>
           <Icon class='arrow' name='ion:md-arrow-down'/>
 
     </div>
