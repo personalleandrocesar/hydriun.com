@@ -11,10 +11,10 @@ jobs:
     - name: Setup SSH Agent
       uses: webfactory/ssh-agent@v0.4.0
       with:
-        ssh-private-key: ${{ secrets.DO_SSH_KEY }}
+        ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
     - name: Deploy to Digital Ocean
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.DO_USERNAME }}@${{ secrets.DO_HOST }} "
+        ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_SSH_KEY }}@${{ secrets.REMOTE_HOSTS }} "
           export NVM_DIR=\"$HOME/.nvm\"
           [ -s \"\$NVM_DIR/nvm.sh\" ] && \. \"\$NVM_DIR/nvm.sh\"
           nvm use 18
