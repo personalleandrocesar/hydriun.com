@@ -17,7 +17,7 @@ jobs:
         ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOSTS }} "
           export NVM_DIR=\"$HOME/.nvm\"
           [ -s \"\$NVM_DIR/nvm.sh\" ] && \. \"\$NVM_DIR/nvm.sh\"
-          nvm use 18.17.0
+          nvm use 20
           cd /home/hydrium.co/public_html
           git pull
           npm install
