@@ -1,0 +1,26 @@
+name: Deploy to Digital Ocean with NVM
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup SSH Agent
+      uses: webfactory/ssh-agent@v0.5.2
+      with:
+        ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
+    - name: Deploy to Digital Ocean
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOSTS }} "
+          export NVM_DIR=\"$HOME/.nvm\"
+          [ -s \"\$NVM_DIR/nvm.sh\" ] && \. \"\$NVM_DIR/nvm.sh\"
+          nvm use 18.17.0
+          cd /home/hydrium.co/public_html
+          git pull
+          npm install
+          npm run build
+          pm2 restart all
+        "
