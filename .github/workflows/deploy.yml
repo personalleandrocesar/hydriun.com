@@ -28,4 +28,4 @@ jobs:
         run: npm run build
 
       - name: Test Nuxt 3
-        run: npm run test
+        run: npm run preview
