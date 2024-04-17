@@ -33,6 +33,9 @@ jobs:
       # - name: Post Nuxt 3
       #   run: npm run prepare
 
+      # - name: Post Nuxt 3
+      #   run: npm run prepare
+
       - name: Deploy via PM2
         run: |
           npm install pm2 -g
