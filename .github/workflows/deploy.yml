@@ -28,4 +28,7 @@ jobs:
         run: npm run build
 
       - name: Test Nuxt 3
+        run: npm run preview
+
+      - name: Post Nuxt 3
         run: npm run prepare
