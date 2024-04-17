@@ -32,3 +32,9 @@ jobs:
 
       # - name: Post Nuxt 3
       #   run: npm run prepare
+
+      - name: Deploy via PM2
+        run: |
+          npm install pm2 -g
+          pm2 delete my-app || true
+          pm2 start .output/server/index.mjs --name my-app
