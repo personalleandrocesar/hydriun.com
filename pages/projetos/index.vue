@@ -1,50 +1,51 @@
 
 
 <template>
-    <NavTwo />
-    <div class='anima'>
+  <NavTwo />
+  <div class='anima'>
 
 
-        <div class='main-tree'>
+    <div class='main-tree'>
 
 
-          
-          <a href="https://deepacupuntura.com" class='main-tree-card deep'>
-            <h4>Deep <br> Acupuntura</h4>
 
-            <div>
-              <img src='/img/deep.jpg' alt='' class='mini-profile'>
-            </div>
-            <div>
-              <h5>@deepacupuntura</h5>
-              <p>Clínica particular de Medicina Chinesa</p>
-            </div>
-          </a>
-          <a href="https://personal.leandrocesar.com" class='main-tree-card personal'>
-            <h4>Personal <br> Leandro Cesar</h4>
+      <a href="https://deepacupuntura.com" class='main-tree-card deep'>
+        <h4>Deep <br> Acupuntura</h4>
 
-            <div>
-              <img src='/img/personalleandrocesar.png' alt='' class='mini-profile'>
-            </div>
-            <div>
-              <h5>@personalleandrocesar</h5>
-              <p>Personal trainer - Consultoria - Avaliação Física - Krav-maga</p>
-            </div>
-          </a>
-          <a href="https://isaarquitetura.vercel.app/" class='main-tree-card personal'>
-            <h4>Isadora Peçanha <br> Arquitetura</h4>
+        <div>
+          <img src='/img/deep.jpg' alt='' class='mini-profile'>
+        </div>
+        <div>
+          <h5>@deepacupuntura</h5>
+          <p>Clínica particular de Medicina Chinesa</p>
+        </div>
+      </a>
+      <a href="https://leandrocesar.com" class='main-tree-card personal'>
+        <h4>Personal <br> Leandro Cesar</h4>
 
-            <div>
-              <img src='/img/isaarquiteta.png' alt='' class='mini-profile isa'  >
-            </div>
-            <div>
-              <h5>@isadorapecanha_arquitetura</h5>
-              <p>Projetos | Consultoria
-               <br>
-                RJ e Atende em todo brasil</p>
-            </div>
-          </a>
-          <!-- <a href="https://isaarquitetura.vercel.app/" class='main-tree-card personal'>
+        <div>
+          <img src='/img/personalleandrocesar.png' alt='' class='mini-profile'>
+        </div>
+        <div>
+          <h5>@personalleandrocesar</h5>
+          <p>Personal trainer - Consultoria - Avaliação Física - Krav-maga</p>
+        </div>
+      </a>
+      <a href="https://isadorapecanha.com/" class='main-tree-card personal'>
+        <h4>Isadora Peçanha <br> Arquitetura</h4>
+
+        <div>
+          <img src='/img/isaarquiteta.png' alt='' class='mini-profile isa'>
+        </div>
+        <div>
+          <h5>@isadorapecanha_arquitetura</h5>
+          <p>Projetos | Consultoria
+            <br>
+            RJ e Atende em todo brasil
+          </p>
+        </div>
+      </a>
+      <!-- <a href="https://isaarquitetura.vercel.app/" class='main-tree-card personal'>
             <h4>Isadora Peçanha <br> Arquitetura</h4>
             <iframe id="inlineFrameExample"
       title="Inline Frame Example"
@@ -64,11 +65,11 @@
                 RJ e Atende em todo brasil</p>
             </div>
           </a> -->
-        </div>
-        
-
-        <br>
     </div>
+
+
+    <br>
+  </div>
 </template>
 
 <style scoped>
