@@ -1,5 +1,5 @@
-
 <template>
+<div  id='websites' class="ani"></div>
   <div>
 
 
@@ -7,7 +7,7 @@
       
         
           <h2><Icon name="ic:baseline-circle" /> WebSites</h2>
-          <h2><Icon name="ic:baseline-circle" /> LandPages</h2>
+          <!-- <h2><Icon name="ic:baseline-circle" /> LandPages</h2> -->
           <h2><Icon name="ic:baseline-circle" /> Sistemas</h2>
         
       </div>
@@ -16,7 +16,7 @@
       <div class='main-tree'>
   <div>
             <h3>Personalizado</h3>
-            <p>Hydrium rejeita a metáfora que sites, trabalhos e sistemas, tem que ser tudo igual e desumano. 
+            <p>Hydriun rejeita a metáfora que sites, trabalhos e sistemas, tem que ser tudo igual e desumano. 
               <br>
               A inspiração vem do gosto e do tipo de negócio do Empreendedor, micro e pequeno empresário.</p> 
             <br>
@@ -24,7 +24,7 @@
             <p>Com um toque organização e sutileza, Hidrium usa framworks, para deixar tudo mais fluido ao usuário.</p> 
             <br>
             <h3>Responsivo</h3>
-            <p>Hydrium fornece um vislumbre nas responsividades, dexando tudo encaixado de acordo com os diferentes dispositivos.</p> 
+            <p>Hydriun fornece um vislumbre nas responsividades, dexando tudo encaixado de acordo com os diferentes dispositivos.</p> 
             <br>
             <h3>clean</h3>
             <p>Com objetivo claro e real de destacar o que realmente importa.
@@ -39,6 +39,23 @@
     </div>
 </template>
 <style scoped>
+@keyframes updown {
+  0% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.ani {
+    
+animation: updown 3s ease infinite;
+}
+
 
 @font-face {
   font-family: "naston-regular";

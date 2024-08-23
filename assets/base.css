@@ -3,7 +3,7 @@
 /* WHITE */
 :root {
   --vt-c-white: #c7cad0;
-  
+  --vt-c-white: linear-gradient(to bottom right, #c7cad0 0%,#20a9b250 50%,#c7cad0 100%);
   --vt-c-white-soft: #ddddddcc;
   --vt-c-white-mute: #a3a9b126;
   --vt-c-divider-light-1: var(--vt-c-white-soft);
@@ -13,7 +13,7 @@
   --vt-c-text-light-3: #33333380;
   --vt-c-text-light-4: #33333340;
   --vt-c-text-light-5: #33333320;
-  --vt-c-text-light-6: #3d898d;
+  --vt-c-text-light-6: #20a9b2;
   --vt-c-text-light-7: #3d898d80;
 }
 
@@ -29,7 +29,7 @@
   --color-a: var(--vt-c-text-light-1);
   --color-head: var(--vt-c-text-light-6);
   --color-text: var(--vt-c-text-light-3);
-  --color-title: var(--vt-c-text-light-4);
+  --color-title: #20a9b296;
   --color-detail: var(--vt-c-text-light-6);
   --color-detailTwo: var(--vt-c-text-light-7);
   --color-hover: var(--vt-c-text-light-5);
@@ -39,17 +39,17 @@
 
 /* BLACK */
 :root {
-  --vt-c-black: #1a1a2e;
-  --vt-c-black-soft: #33333360;
-  --vt-c-black-mute: #33333340;
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: hsla(0, 0%, 86.7%, .8);
-  --vt-c-text-dark-1: #aaaaaa80;
+    --vt-c-black: linear-gradient(to bottom right, #1a1a2e 0%,#252544 50%,#1a1a2e 100%);
+    --vt-c-black-soft: #33333360;
+    --vt-c-black-mute: #33333340;
+    --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
+    --vt-c-divider-dark-2: hsla(0, 0%, 86.7%, .8);
+    --vt-c-text-dark-1: #aaaaaa80;
     --vt-c-text-dark-2: #33333380;
     --vt-c-text-dark-3: #ddddddcc;
     --vt-c-text-dark-4: #3d898d80;
     --vt-c-text-dark-5: #33333320;
-    --vt-c-text-dark-6: #3d898d;
+    --vt-c-text-dark-6: #20a9b2;
     --vt-c-text-dark-7: #3d898d80;
 }
 
@@ -58,16 +58,15 @@
     --color-background: var(--vt-c-black);
     --color-background-soft: var(--vt-c-black-soft);
     --color-background-mute: var(--vt-c-text-dark-4);
-
     --color-border: var(--vt-c-divider-dark-2);
     --color-border-hover: var(--vt-c-divider-dark-1);
---color-a: var(--vt-c-text-dark-1);
-  --color-head: var(--vt-c-text-dark-6);
-  --color-text: var(--vt-c-text-dark-3);
-  --color-title: var(--vt-c-text-dark-1);
-  --color-detail: var(--vt-c-text-dark-6);
-  --color-detailTwo: var(--vt-c-text-dark-7);
-  --color-hover: var(--vt-c-text-dark-5);
+    --color-a: var(--vt-c-text-dark-1);
+    --color-head: var(--vt-c-text-dark-6);
+    --color-text: var(--vt-c-text-dark-3);
+    --color-title: #fff;
+    --color-detail: var(--vt-c-text-dark-6);
+    --color-detailTwo: var(--vt-c-text-dark-7);
+    --color-hover: var(--vt-c-text-dark-5);
   }
 }
 

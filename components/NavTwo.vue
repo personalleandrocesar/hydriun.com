@@ -34,10 +34,11 @@ nav {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   z-index: 2;
+  background: linear-gradient(to bottom right, #20a9b210 0%,#20a9b210 50%,#20a9b230 100%);
 }
 
 nav a {
-  color: var(--color-title);
+  color: #999;
   font-weight: bold;
   font-size: .9rem;
   display: inline-block;
@@ -45,11 +46,11 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--color-detailTwo);
+  color: #20a9b295;
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-detail);
+  color: #20a9b2;
 }
 
 nav a:first-of-type {

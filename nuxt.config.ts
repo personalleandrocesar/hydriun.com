@@ -6,8 +6,8 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       meta: [
-        { name: 'theme-color', content: '#3d898d' },
-        { name: 'theme-color', content: '#3d898d' },
+        { name: 'theme-color', content: '#20a9b2' },
+        { name: 'theme-color', content: '#20a9b2' },
       ],
       noscript: [
         // <noscript>JavaScript is required</noscript>

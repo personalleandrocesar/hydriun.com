@@ -1,15 +1,27 @@
 <script setup lang="ts">
 useHead({
-    titleTemplate: 'Hydrium',
+    titleTemplate: 'Hydriun',
 })
+
+const animate = ref(false);
+
+function handleClick() {
+  animate.value = true;
+  setTimeout(() => {
+    animate.value = false;
+  }, 7000); // Duração da animação em milissegundos
+}
 </script>
 
 <template>
   <Nav/>
   <header>
     <div class='logo'>
-      <h1 class=''>Hydrium</h1>
-          <Icon class='arrow' name='ion:md-arrow-down'/>
+      <h1 class=''>Hydriun</h1>
+      <NuxtLink :to="{path:'/', hash: '#websites'}" class="ani" @click="handleClick">
+                <Icon class="arrow" :class="{ 'animate': animate }" name='ion:md-arrow-down'/>
+            </NuxtLink>
+
 
     </div>
   </header>
@@ -18,16 +30,20 @@ useHead({
 
 <style scoped>
 
-@keyframes updown {
-  0% {
-    transform: translateY(-10px);
+@keyframes clickAnimation {
+    0% {
+      transform: translateY(-10px);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(-10px);
+    }
   }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(-10px);
-  }
+
+.animate {
+  animation: clickAnimation 1s ease forwards;
 }
 
 .logo{
@@ -40,6 +56,11 @@ margin: 0 auto;
   justify-content: center;
   font-family: 'Nirequa';
   color: var(--color-text);
+}
+
+.ani {
+    
+animation: updown 3s ease infinite;
 }
 
 .arrow {
