@@ -1,42 +1,47 @@
+<script setup>
+import Reveal from '@/components/Animacoes/Reveal.vue';
+</Script>
 <template>
 <div  id='websites' class="ani"></div>
-  <div>
 
-
+<Reveal :delay="100">
       <div class='main-two'>
       
         
           <h2><Icon name="ic:baseline-circle" /> WebSites</h2>
-          <!-- <h2><Icon name="ic:baseline-circle" /> LandPages</h2> -->
           <h2><Icon name="ic:baseline-circle" /> Sistemas</h2>
+          <!-- <h2><Icon name="ic:baseline-circle" /> LandPages</h2> -->
         
       </div>
-
-
+</Reveal>
       <div class='main-tree'>
-  <div>
-            <h3>Personalizado</h3>
+        <Reveal :delay="400">
+            <h3>Personalizado.</h3>
             <p>Hydriun rejeita a metáfora que sites, trabalhos e sistemas, tem que ser tudo igual e desumano. 
               <br>
               A inspiração vem do gosto e do tipo de negócio do Empreendedor, micro e pequeno empresário.</p> 
+        </Reveal>
             <br>
-            <h3>Fluido</h3>
+            <Reveal :delay="600">
+            <h3>Fluido.</h3>
             <p>Com um toque organização e sutileza, Hidrium usa framworks, para deixar tudo mais fluido ao usuário.</p> 
+            </Reveal>
             <br>
-            <h3>Responsivo</h3>
+            <Reveal :delay="800">
+            <h3>Responsivo.</h3>
             <p>Hydriun fornece um vislumbre nas responsividades, dexando tudo encaixado de acordo com os diferentes dispositivos.</p> 
+            </Reveal>
             <br>
-            <h3>clean</h3>
+            <Reveal :delay="1000">
+            <h3>Clean.</h3>
             <p>Com objetivo claro e real de destacar o que realmente importa.
               <br> 
               Divisões, textos e imagens são muito bem alinhados e pensados quando o layout é minimalista.</p> 
+            </Reveal>
             <br>
           </div>
 
-      </div>
-
       <br>
-    </div>
 </template>
 <style scoped>
 @keyframes updown {
@@ -105,7 +110,6 @@ animation: updown 3s ease infinite;
   border: solid 1px var(--color-text);
   border-radius: 3% 3% 3% 3%;
   align-items: center;
-  width: 44%;
 }
 
 
@@ -127,8 +131,7 @@ animation: updown 3s ease infinite;
 }
 
 @media only screen and (max-width: 382px) {
-  .main-tree-card {
-    width: 90%;
+  .main-tree {
   }
 }
 </style>

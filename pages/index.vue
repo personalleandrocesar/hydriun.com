@@ -3,29 +3,26 @@ useHead({
     titleTemplate: 'Hydriun',
 })
 
-const animate = ref(false);
-
-function handleClick() {
-  animate.value = true;
-  setTimeout(() => {
-    animate.value = false;
-  }, 7000); // Duração da animação em milissegundos
-}
 </script>
 
 <template>
+
   <Nav/>
   <header>
+  
     <div class='logo'>
-      <h1 class=''>Hydriun</h1>
-      <NuxtLink :to="{path:'/', hash: '#websites'}" class="ani" @click="handleClick">
-                <Icon class="arrow" :class="{ 'animate': animate }" name='ion:md-arrow-down'/>
-            </NuxtLink>
-
+    
+        <h1 class=''>Hydriun</h1>
+        <NuxtLink :to="{path:'/', hash: '#websites'}" class="animate">
+            <Icon class="arrow" name='ion:md-arrow-down'/>
+        </NuxtLink>
 
     </div>
+    
   </header>
+  
   <Home/>
+  
 </template>
 
 <style scoped>
@@ -43,7 +40,7 @@ function handleClick() {
   }
 
 .animate {
-  animation: clickAnimation 1s ease forwards;
+  animation: clickAnimation 3s ease infinite;
 }
 
 .logo{
