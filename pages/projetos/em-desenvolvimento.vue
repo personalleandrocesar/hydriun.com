@@ -8,17 +8,20 @@
 
 
 
-                  <a href="https://triboalmaforte.com" class='main-five-card tribo'>
-                    <h4>Tribo <br> Alma forte</h4>
+    <a href="https://isadorapecanha.com/" class='main-tree-card personal'>
+      <h4>Isadora Peçanha <br> Arquitetura</h4>
 
-                    <div>
-                      <img src='/img/tribo.jpg' alt='' class='mini-profile'>
-                    </div>
-                    <div>
-                      <h5>@triboalmaforte</h5>
-                      <p>O corpo só é forte porque a alma é forte!</p>
-                    </div>
-                  </a>
+      <div>
+        <img src='/img/isaarquiteta.png' alt='' class='mini-profile isa'>
+      </div>
+      <div>
+        <h5>@isadorapecanha_arquitetura</h5>
+        <p>Projetos | Consultoria
+          <br>
+          RJ e Atende em todo brasil
+        </p>
+      </div>
+    </a>
 
     </div>
   </div>
@@ -67,7 +70,7 @@ code {
 
 .main-tree {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: row;
   margin: 0px 0 300px 0;
   flex-wrap: wrap;
@@ -134,7 +137,7 @@ code {
 }
 
 .main-tree a:hover {
-  background-color: var(--color-background-mute);
+  background-color:  #20a9b240;
   transform: translateY(0.9em);
   box-shadow: 0 5px 5px var(--color-detailTwo);
 }
@@ -152,7 +155,7 @@ code {
 
 .mini-profile {
   height: 25px;
-  border-radius: 20px;
+  border-radius: 50%;
   margin: 10px 10px;
 }
 

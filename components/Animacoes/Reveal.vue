@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{ reveal: true, active: isVisible }"
-    :style="{ transitionDelay: delay + 'ms' }"
+    :style="{ transitionDelay: independent ? '0ms' : delay + 'ms' }"
   >
     <slot></slot>
   </div>
@@ -14,6 +14,10 @@ const props = defineProps({
   delay: {
     type: Number,
     default: 0,
+  },
+  independent: {
+    type: Boolean,
+    default: false,
   },
 });
 

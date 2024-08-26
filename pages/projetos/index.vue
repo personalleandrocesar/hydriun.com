@@ -17,34 +17,21 @@
         </div>
         <div>
           <h5>@deepacupuntura</h5>
-          <p>Clínica particular de Medicina Chinesa</p>
+          <p>Clínica de Medicina Chinesa</p>
         </div>
       </a>
       <a href="https://leandrocesar.com" class='main-tree-card personal'>
         <h4>Personal <br> Leandro Cesar</h4>
 
         <div>
-          <img src='/img/personalleandrocesar.png' alt='' class='mini-profile'>
+          <img src='/img/leandrocesar.png' alt='' class='mini-profile'>
         </div>
         <div>
           <h5>@personalleandrocesar</h5>
           <p>Personal trainer - Consultoria - Avaliação Física - Krav-maga</p>
         </div>
       </a>
-      <a href="https://isadorapecanha.com/" class='main-tree-card personal'>
-        <h4>Isadora Peçanha <br> Arquitetura</h4>
-
-        <div>
-          <img src='/img/isaarquiteta.png' alt='' class='mini-profile isa'>
-        </div>
-        <div>
-          <h5>@isadorapecanha_arquitetura</h5>
-          <p>Projetos | Consultoria
-            <br>
-            RJ e Atende em todo brasil
-          </p>
-        </div>
-      </a>
+      
       <!-- <a href="https://isaarquitetura.vercel.app/" class='main-tree-card personal'>
             <h4>Isadora Peçanha <br> Arquitetura</h4>
             <iframe id="inlineFrameExample"
@@ -114,7 +101,7 @@ code {
 
 .main-tree {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: row;
   margin: 0px 0 300px 0;
   flex-wrap: wrap;
@@ -163,7 +150,7 @@ code {
   justify-content: flex-start;
   flex-direction: column;
   border: solid 1px var(--color-text);
-  border-radius: 3% 3% 3% 3%;
+  border-radius: 12px;
   align-items: center;
   width: 47%;
 }
@@ -171,9 +158,8 @@ code {
 
 .main-tree a {
   border: solid 3px var(--color-background-mute);
-  padding-bottom: 10px;
-  margin: 0px 5px 20px 5px;
-  border-radius: 20px;
+  margin: 0px 3px 20px 3px;
+  border-radius: 12px;
   transform: scale(0.97);
   transition: all .4s linear;
   transform: translateY(1em);
@@ -181,7 +167,7 @@ code {
 }
 
 .main-tree a:hover {
-  background-color: var(--color-background-mute);
+  background-color: #20a9b240;
   transform: translateY(0.9em);
   box-shadow: 0 5px 5px var(--color-detailTwo);
 }
@@ -199,7 +185,7 @@ code {
 
 .mini-profile {
   height: 25px;
-  border-radius: 20px;
+  border-radius: 50%;
   margin: 10px 10px;
 }
 

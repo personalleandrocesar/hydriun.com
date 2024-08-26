@@ -44,7 +44,7 @@ useHead({
 }
 
 .logo{
-margin: 0 auto;
+margin: 0 auto 80px auto;
   height: 90vh;
   display: flex;
   flex-wrap: nowrap;
