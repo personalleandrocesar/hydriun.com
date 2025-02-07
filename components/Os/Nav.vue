@@ -1,11 +1,26 @@
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+
+const localTime = ref(new Date().toLocaleTimeString());
+
+let interval = null;
+
+onMounted(() => {
+  interval = setInterval(() => {
+    localTime.value = new Date().toLocaleTimeString();
+  }, 1000);
+});
+
+onBeforeUnmount(() => {
+  clearInterval(interval);
+});
+</script>
 <template>
     <div class='nav'>
         <div>
             <div>
               <nav>
-                <NuxtLink to="/projetos">PROJETOS</NuxtLink>
-                <NuxtLink to="/sobre">SOBRE</NuxtLink>
-                <NuxtLink class="login" to="/os">LOGIN</NuxtLink>
+                <NuxtLink class="login">{{ localTime }}</NuxtLink>
               </nav>
             </div>
           </div>
@@ -19,6 +34,8 @@ nav {
   font-size: 12px;
   text-align: center;
   padding: 15px 0 ;
+  display: flex;
+  justify-content: flex-end;
   position: fixed;
   top: 0px;
   -webkit-backdrop-filter: blur(10px);
@@ -28,9 +45,10 @@ nav {
 }
 
 nav a {
-  color: #999;
+  color: #20a9b2;
   font-weight: bold;
   font-size: .9rem;
+  margin-right: 2rem;
 }
 nav a:hover {
   color: #20a9b2;
@@ -50,10 +68,4 @@ nav a:first-of-type {
   border: 0;
 }
 
-.login {
-  z-index: 20;
-  position: absolute;
-  top: 15px;
-  right: 25px;;
-}
 </style>
