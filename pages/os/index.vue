@@ -20,59 +20,163 @@
     clearInterval(interval);
   });
 
-  // Criar o banco de dados local
-  const db = new Dexie("NotesDB");
-  db.version(1).stores({
-    users: "username",
-    notes: "++id, username, text"
-  });
+ // Criar o banco de dados local
+const db = new Dexie("NotesDB");
+db.version(1).stores({
+  spaces: "++id, username, name",
+  flows: "++id, username, spaceId, name",
+  notes: "++id, username, flowId, text"
+});
 
   const username = ref("");
   const welcomeVisible = ref(false);
   const moved = ref(false);
+  const movedT   = ref(false);
   const timeline = ref(false);
   const desire = ref("");
+  const nameFlow = ref("");
   const notes = ref([]);
   const newNote = ref("");
+  const flow = ref(false)
+  const flowT = ref(true)
+  const newCard = ref(false)
+  const nameSpace = ref("");
+  const spaces = ref([]);
+  const flows = ref([]);
+  const activeSpaceId = ref(null);
+  const activeFlowId = ref(null);
 
-  // Carregar notas do usuário ao iniciar ou ao mudar o username
-  const loadNotes = async () => {
-    if (username.value.trim()) {
-      notes.value = await db.notes.where("username").equals(username.value).toArray();
+
+// Carregar Spaces
+const loadSpaces = async () => {
+  if (username.value.trim()) {
+    spaces.value = await db.spaces.where("username").equals(username.value).toArray();
+  }
+};
+
+// Carregar Flows de um Space
+const loadFlows = async () => {
+  if (activeSpaceId.value !== null) {
+    flows.value = await db.flows.where("spaceId").equals(activeSpaceId.value).toArray();
+    if (flows.value.length > 0) {
+      activeFlowId.value = flows.value[0].id;
+      nameFlow.value = flows.value[0].name;
+      await loadNotes();
     }
-  };
+  }
+};
+
+// Carregar Notas do Flow ativo
+const loadNotes = async () => {
+  if (activeFlowId.value !== null) {
+    notes.value = await db.notes.where("flowId").equals(activeFlowId.value).toArray();
+  }
+};
+
+// Criar novo Space
+const newSpace = async () => {
+  if (!username.value.trim()) return;
+  
+  const spaceName = `Space ${spaces.value.length + 1}`;
+  const id = await db.spaces.add({ username: username.value, name: spaceName });
+
+  spaces.value.push({ id, username: username.value, name: spaceName });
+  activeSpaceId.value = id;
+  nameSpace.value = spaceName;
+
+  await newFlow(id);
+  await loadFlows();
+};
+
+const deleteSpace = async (spaceId) => {
+  // Remover todos os flows relacionados a esse Space
+  const relatedFlows = await db.flows.where("spaceId").equals(spaceId).toArray();
+  for (const flow of relatedFlows) {
+    await db.notes.where("flowId").equals(flow.id).delete(); // Deletar notas dos flows
+    await db.flows.delete(flow.id); // Deletar os flows
+  }
+
+  // Remover o próprio Space
+  await db.spaces.delete(spaceId);
+  spaces.value = spaces.value.filter(space => space.id !== spaceId);
+
+  // Resetar seleção se o Space deletado for o ativo
+  if (activeSpaceId.value === spaceId) {
+    activeSpaceId.value = null;
+    flows.value = [];
+    notes.value = [];
+  }
+};
+
+
+// Criar um Flow dentro de um Space
+const newFlow = async (spaceId) => {
+  if (!username.value.trim() || spaceId === null) return;
+
+  const flowCount = await db.flows.where("spaceId").equals(spaceId).count();
+  const flowName = `Flow ${flowCount + 1}`;
+  const id = await db.flows.add({ username: username.value, spaceId, name: flowName });
+
+  flows.value.push({ id, username: username.value, spaceId, name: flowName });
+  activeFlowId.value = id;
+  nameFlow.value = flowName;
+  await loadNotes();
+};
+
+
+// Selecionar um Space
+const selectSpace = async (space) => {
+  activeSpaceId.value = space.id;
+  nameSpace.value = space.name;
+  await loadFlows();
+};
+
+// Selecionar um Flow dentro do Space
+const selectFlow = async (flow) => {
+  activeFlowId.value = flow.id;
+  nameFlow.value = flow.name;
+  await loadNotes();
+};
+
+// Adicionar Nota ao Flow
+const addNote = async () => {
+  if (!newNote.value.trim() || activeFlowId.value === null) return;
+
+  await db.notes.add({ username: username.value, text: newNote.value, flowId: activeFlowId.value });
+  newNote.value = "";
+  await loadNotes();
+};
+
+// Deletar Nota
+const deleteNote = async (id) => {
+  await db.notes.delete(id);
+  await loadNotes();
+};
+
+// Carregar Spaces quando o username mudar
+watch(username, loadSpaces);
+
+
 const timelineClicked = ref(false);
+const navClicked = ref(false);
 
 const activateTimeline = () => {
   timelineClicked.value = true;
-  timeline.value = false
+  navClicked.value = true;
+  timeline.value = false;
+  movedT.value = false;
 };
-
-  onMounted(loadNotes);
-  watch(username, loadNotes);
-
-  // Adicionar nova nota para o usuário atual
-  const addNote = async () => {
-    if (!newNote.value.trim() || !username.value.trim()) return;
-    await db.notes.add({ username: username.value, text: newNote.value });
-    await loadNotes();
-    newNote.value = "";
-  };
-
-  // Deletar uma nota
-  const deleteNote = async (id) => {
-    await db.notes.delete(id);
-    await loadNotes();
-  };
 
   const showMessage = () => {
     if (!welcomeVisible.value && username.value.trim()) {
       welcomeVisible.value = true;
       setTimeout(() => {
         moved.value = true;
+        movedT.value = true;
       }, 3000);
       setTimeout(() => {
         timeline.value = true;
+        newCard.value = true;
       }, 3500);
     }
   };
@@ -102,7 +206,7 @@ const activateTimeline = () => {
   </script>
 
   <template>
-  <div class="nav" :class="{ showNav: timelineClicked }">
+  <div class="nav" :class="{ showNav: navClicked }">
     <nav>
       <NuxtLink class="login">{{ localTime }}</NuxtLink>
     </nav>
@@ -127,19 +231,54 @@ const activateTimeline = () => {
   <transition name="fade">
     <div v-if="welcomeVisible" class="welcome-message" :class="{ moveUp: moved }">
       <p v-if="!moved">{{ greetingMessage }}, {{ username }}!</p>
-      <p class="gray" v-if="!moved">O que você deseja fazer?</p>
 
-      <p class="blue" v-if="moved">{{ greetingMessage }}, {{ username }}!</p>
-
+      <p class="blue" v-if="movedT">{{ greetingMessage }}, {{ username }}!</p>
       <p v-if="moved" :class="{ 'desire-top': timelineClicked }">
         <input
+          v-if="flowT" 
           type="text"
           class="desire"
           placeholder="O que você deseja fazer?"
           v-model="desire"
         />
+        <input
+          v-else
+          type="text"
+          class="desire"
+          v-model="nameFlow"
+        />
       </p>
+      <p v-if="flowT" :class="{ 'desire-top': timelineClicked }">
+      </p>
+      <div v-if="newCard" class='spaces'>
+        <div class="card" @click="newSpace"><Icon name="ic:twotone-add" /> Criar space</div>
+      </div>
+      <br>
+      <h2 v-if="newCard">Spaces</h2>
+      <div v-if="newCard" class='spaces'>
+        <div class="spaces">
+          <div  class="card" v-for="space in spaces" :key="space.id" @click="selectSpace(space)">
+            {{ space.name }}
+            <button class="button" @click="deleteSpace(space.id)">x</button>
+          </div>
+        </div>
+      </div>
 
+
+
+
+
+      <div class="divv">
+
+        <div v-if="flow" class="button-square-plus"><div class="btn"> + flow</div></div>
+        <div v-if="flow" class="button-square">
+          <div v-for="flow in flows" :key="flow.id" class="btn-plus">
+            {{ nameFlow }}
+          </div>
+        </div>
+
+        
+</div>
       <transition name="fadetwo">
         <p v-if="timeline" @click="activateTimeline" class="fixed">
           <Icon name="ic:sharp-arrow-downward" />Linha do tempo
@@ -151,6 +290,20 @@ const activateTimeline = () => {
 
 
 <style scoped>
+.body {
+  overflow-x: auto;
+  width: 100px;
+}
+.spaces {
+  display: flex;
+  gap: 20px;
+}
+
+.spaces:nth-child(2) {
+  width: 100%;
+    overflow-x: auto;
+}
+
 
 .showNav {
   background: linear-gradient(to bottom right, #20a9b210 0%,#20a9b210 50%,#20a9b230 100%);
@@ -159,17 +312,30 @@ const activateTimeline = () => {
 }
 
 .desire {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .desire-top {
   position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0px;
+  left: 0%;
   font-size: 1.2rem;
   font-weight: bold;
+  transform: translateY(-40px);
+  animation: clicktop .5s linear;
 }
+
+@keyframes clicktop {
+      0% {
+        transform: translateY(0px);
+      }
+      100% {
+        transform: translateY(-40px);
+      }
+    }
+
+
+
   .nav {
     font-family: 'Nirequa';
     width: 100%;
@@ -224,7 +390,7 @@ const activateTimeline = () => {
     width: 80%;
     padding: 5px;
   }
-  button {
+  button-square{
     margin-left: 5px;
   }
   ul {
@@ -250,9 +416,12 @@ const activateTimeline = () => {
     color: var(--color-detail);
     font-size: 3.5rem;
   }
+  h2 {
+    text-align: left;
+  }
 
   .welcome-message .gray {
-      color: var(--color-text);
+    color: var(--color-text);
       font-size: 2rem;
   }
   .welcome-message .blue {
@@ -268,6 +437,75 @@ const activateTimeline = () => {
     background: transparent;
     box-shadow: none;
     font-size: 14px;
+  }
+
+  .card {
+    height: 150px;
+    width: 200px;
+    border-radius: 20px;
+    background: #20a9b220;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .card:hover {
+    background: #20a9b280;
+  }
+
+  .button{
+        display: block;
+    /* margin: 10px 0; */
+    /* padding: 8px; */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    position: relative;
+    top: -85px;
+    right: -95px;
+  }
+
+  .btn {
+    height: 45px;
+    width: 200px;
+    border-radius: 12px;
+    background: #20a9b220;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn-plus {
+    height: 45px;
+    width: 200px;
+    border-radius: 12px;
+    background: #20a9b220;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .button-square-plus{
+    position: absolute;
+  top: 100px;
+  left: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transform: translateY(-40px);
+  animation: clicktop .5s linear;
+  }
+  .button-square{
+    position: absolute;
+  top: 155px;
+  left: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transform: translateY(-40px);
+  animation: clicktop .5s linear;
   }
 
   .icon {
