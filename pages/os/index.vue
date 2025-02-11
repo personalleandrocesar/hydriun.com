@@ -83,6 +83,12 @@ const newSpace = async () => {
   spaces.value.push({ id, username: username.value, name: spaceName });
   activeSpaceId.value = id;
   nameSpace.value = spaceName;
+  timelineClicked.value = true;
+  navClicked.value = true;
+  timeline.value = false;
+  movedT.value = false;
+  newCard.value = false;
+  flowT.value = false;
 
   await newFlow(id);
   await loadFlows();
@@ -241,12 +247,7 @@ const activateTimeline = () => {
           placeholder="O que você deseja fazer?"
           v-model="desire"
         />
-        <input
-          v-else
-          type="text"
-          class="desire"
-          v-model="nameFlow"
-        />
+        <h2 v-else class="desire">{{ nameSpace }}</h2>
       </p>
       <p v-if="flowT" :class="{ 'desire-top': timelineClicked }">
       </p>
@@ -264,7 +265,22 @@ const activateTimeline = () => {
         </div>
       </div>
 
-
+      <div class="flows" v-if="activeSpaceId">
+        <button @click="newFlow(activeSpaceId)">+ Criar Flow</button>
+        <div v-for="flow in flows" :key="flow.id" @click="selectFlow(flow)">
+          {{ flow.name }}
+        </div>
+        <div class="notes" v-if="activeFlowId">
+        <h2>Notas de {{ nameFlow }}</h2>
+        <input type="text" v-model="newNote" placeholder="Digite uma nota..." @keyup.enter="addNote" />
+        <ul>
+          <li v-for="note in notes" :key="note.id">
+            {{ note.text }}
+            <button @click="deleteNote(note.id)">Excluir</button>
+          </li>
+        </ul>
+      </div>
+      </div>
 
 
 
@@ -276,7 +292,7 @@ const activateTimeline = () => {
             {{ nameFlow }}
           </div>
         </div>
-
+        
         
 </div>
       <transition name="fadetwo">
@@ -323,6 +339,7 @@ const activateTimeline = () => {
   font-weight: bold;
   transform: translateY(-40px);
   animation: clicktop .5s linear;
+  width: 170px;
 }
 
 @keyframes clicktop {
@@ -453,6 +470,7 @@ const activateTimeline = () => {
 
   .card:hover {
     background: #20a9b280;
+    cursor:pointer;
   }
 
   .button{
