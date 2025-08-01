@@ -10,8 +10,6 @@ useHead({ titleTemplate: 'Hydriun Os' });
 const localTime = ref(new Date().toLocaleTimeString());
 let interval = null;
 
-
-
 onMounted(() => {
   interval = setInterval(() => {
     localTime.value = new Date().toLocaleTimeString();
@@ -82,6 +80,8 @@ const login = async () => {
       newCard.value = true;
     }, 3500);
   }
+  
+  markAnimated(); // ← Aqui!
 };
 const register = async () => {
   const existing = await db.users.get(loginUsername.value);
@@ -113,6 +113,11 @@ const spaces = ref([]);
 const flows = ref([]);
 const activeSpaceId = ref(null);
 const activeFlowId = ref(null);
+const hasAnimated = ref(false)
+
+onMounted(() => {
+  hasAnimated.value = localStorage.getItem('hydriunHasAnimated') === 'true'
+})
 
 const timelineClicked = ref(false);
 const navClicked = ref(false);
@@ -529,6 +534,7 @@ watch(username, loadSpaces);
   .card:hover {
     background: #20a9b280;
     cursor:pointer;
+    color: #333;
   }
 
   .button{
@@ -543,6 +549,11 @@ watch(username, loadSpaces);
     position: relative;
     top: -85px;
     right: -95px;
+  }
+  
+  button:hover{
+    background-color: #ff1900;
+    transition: all 0.4s linear;
   }
 
   .btn-register {
