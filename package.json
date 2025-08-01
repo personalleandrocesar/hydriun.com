@@ -20,6 +20,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
-    "dexie": "^4.0.11"
+    "dexie": "^4.0.11",
+    "markdown-it": "^14.1.0"
   }
 }

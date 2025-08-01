@@ -48,10 +48,10 @@ import Reveal from '@/components/Animacoes/Reveal.vue';
       </div>
             <br>
           </div>
-          
 
       <br>
 </template>
+          <QuadroSlider />
 <style scoped>
 @keyframes updown {
   0% {

@@ -1,60 +1,148 @@
-  <script setup>
-  useHead({
-      titleTemplate: 'Hydriun Os',
-  })
+<script setup>
+import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue';
+import Dexie from 'dexie';
+import MarkdownIt from 'markdown-it';
+const md = new MarkdownIt();
+// Head
+useHead({ titleTemplate: 'Hydriun Os' });
 
-  import { ref, onMounted, onBeforeUnmount } from 'vue';
-  import Dexie from "dexie";
+// Relógio
+const localTime = ref(new Date().toLocaleTimeString());
+let interval = null;
 
-  const localTime = ref(new Date().toLocaleTimeString());
+onMounted(async () => {
+  const savedUser = localStorage.getItem("hydriunUser");
+  if (savedUser) {
+    username.value = savedUser;
+    isLoggedIn.value = true;
+    await loadSpaces(); // Espera carregar os spaces
 
-  let interval = null;
+    if (spaces.value.length > 0) {
+      const firstSpace = spaces.value[0];
+      activeSpaceId.value = firstSpace.id;
+      nameSpace.value = firstSpace.name;
+      await loadFlows(); // Carrega flows e notas do primeiro
+    }
+  }
+  loading.value = false;
 
-  onMounted(() => {
-    interval = setInterval(() => {
-      localTime.value = new Date().toLocaleTimeString();
-    }, 1000);
-  });
+  if (!welcomeVisible.value && username.value.trim()) {
+    welcomeVisible.value = true;
+    setTimeout(() => {
+      moved.value = true;
+      movedT.value = true;
+    }, 3000);
+    setTimeout(() => {
+      timeline.value = true;
+      newCard.value = true;
+    }, 3500);
+  }
+});
 
-  onBeforeUnmount(() => {
-    clearInterval(interval);
-  });
 
- // Criar o banco de dados local
+onBeforeUnmount(() => clearInterval(interval));
+
+// Banco de dados
 const db = new Dexie("NotesDB");
-db.version(1).stores({
+db.version(2).stores({
+  users: "username, password", // nova tabela
   spaces: "++id, username, name",
   flows: "++id, username, spaceId, name",
   notes: "++id, username, flowId, text"
 });
 
-  const username = ref("");
-  const welcomeVisible = ref(false);
-  const moved = ref(false);
-  const movedT   = ref(false);
-  const timeline = ref(false);
-  const desire = ref("");
-  const nameFlow = ref("");
-  const notes = ref([]);
-  const newNote = ref("");
-  const flow = ref(false)
-  const flowT = ref(true)
-  const newCard = ref(false)
-  const nameSpace = ref("");
-  const spaces = ref([]);
-  const flows = ref([]);
-  const activeSpaceId = ref(null);
-  const activeFlowId = ref(null);
+// Login
+const loading = ref(true); // novo
+const loginUsername = ref("");
+const loginPassword = ref("");
+const isLoggedIn = ref(false);
+const loginError = ref("");
+const registerBtn = ref(false);
+
+const username = ref("");
+const login = async () => {
+  const user = await db.users.get(loginUsername.value);
+  if (user && user.password === loginPassword.value) {
+    username.value = loginUsername.value;
+    isLoggedIn.value = true;
+    localStorage.setItem("hydriunUser", username.value);
+    await loadSpaces();
+  } else {
+    registerBtn.value = true
+    loginError.value = "Usuário ou senha incorretos";
+    setTimeout(() => {
+      loginError.value = '';
+    },5000)
+  }
+
+  if (!welcomeVisible.value && username.value.trim()) {
+    welcomeVisible.value = true;
+    setTimeout(() => {
+      moved.value = true;
+      movedT.value = true;
+    }, 3000);
+    setTimeout(() => {
+      timeline.value = true;
+      newCard.value = true;
+    }, 3500);
+  }
+};
+const register = async () => {
+  const existing = await db.users.get(loginUsername.value);
+  if (existing) {
+    loginError.value = "Usuário já existe";
+    return;
+  }
+  await db.users.add({
+    username: loginUsername.value,
+    password: loginPassword.value
+  });
+  await login();
+};
+
+// Sistema Hydriun OS
+const welcomeVisible = ref(false);
+const moved = ref(false);
+const movedT = ref(false);
+const timeline = ref(false);
+const desire = ref("");
+const nameFlow = ref("");
+const notes = ref([]);
+const newNote = ref("");
+const flow = ref(false);
+const flowT = ref(true);
+const newCard = ref(false);
+const nameSpace = ref("");
+const spaces = ref([]);
+const flows = ref([]);
+const activeSpaceId = ref(null);
+const activeFlowId = ref(null);
+
+const timelineClicked = ref(false);
+const navClicked = ref(false);
+
+const logout = () => {
+  isLoggedIn.value = false;
+  username.value = "";
+  localStorage.removeItem("hydriunUser");
+  welcomeVisible.value = false;
+  moved.value = false;
+  loginUsername.value = '';
+  loginPassword.value = '';
+  registerBtn.value = false;
+  moved.value = false;
+  movedT.value = false;
+  timeline.value = false;
+  newCard.value = false;
+};
 
 
-// Carregar Spaces
+// Loaders
 const loadSpaces = async () => {
   if (username.value.trim()) {
     spaces.value = await db.spaces.where("username").equals(username.value).toArray();
   }
 };
-
-// Carregar Flows de um Space
 const loadFlows = async () => {
   if (activeSpaceId.value !== null) {
     flows.value = await db.flows.where("spaceId").equals(activeSpaceId.value).toArray();
@@ -65,18 +153,16 @@ const loadFlows = async () => {
     }
   }
 };
-
-// Carregar Notas do Flow ativo
 const loadNotes = async () => {
   if (activeFlowId.value !== null) {
     notes.value = await db.notes.where("flowId").equals(activeFlowId.value).toArray();
   }
 };
 
-// Criar novo Space
+// Criar/Deletar
 const newSpace = async () => {
   if (!username.value.trim()) return;
-  
+
   const spaceName = `Space ${spaces.value.length + 1}`;
   const id = await db.spaces.add({ username: username.value, name: spaceName });
 
@@ -93,29 +179,21 @@ const newSpace = async () => {
   await newFlow(id);
   await loadFlows();
 };
-
 const deleteSpace = async (spaceId) => {
-  // Remover todos os flows relacionados a esse Space
   const relatedFlows = await db.flows.where("spaceId").equals(spaceId).toArray();
   for (const flow of relatedFlows) {
-    await db.notes.where("flowId").equals(flow.id).delete(); // Deletar notas dos flows
-    await db.flows.delete(flow.id); // Deletar os flows
+    await db.notes.where("flowId").equals(flow.id).delete();
+    await db.flows.delete(flow.id);
   }
-
-  // Remover o próprio Space
   await db.spaces.delete(spaceId);
   spaces.value = spaces.value.filter(space => space.id !== spaceId);
 
-  // Resetar seleção se o Space deletado for o ativo
   if (activeSpaceId.value === spaceId) {
     activeSpaceId.value = null;
     flows.value = [];
     notes.value = [];
   }
 };
-
-
-// Criar um Flow dentro de um Space
 const newFlow = async (spaceId) => {
   if (!username.value.trim() || spaceId === null) return;
 
@@ -128,182 +206,167 @@ const newFlow = async (spaceId) => {
   nameFlow.value = flowName;
   await loadNotes();
 };
-
-
-// Selecionar um Space
 const selectSpace = async (space) => {
   activeSpaceId.value = space.id;
   nameSpace.value = space.name;
   await loadFlows();
 };
-
-// Selecionar um Flow dentro do Space
 const selectFlow = async (flow) => {
   activeFlowId.value = flow.id;
   nameFlow.value = flow.name;
   await loadNotes();
 };
-
-// Adicionar Nota ao Flow
 const addNote = async () => {
   if (!newNote.value.trim() || activeFlowId.value === null) return;
-
   await db.notes.add({ username: username.value, text: newNote.value, flowId: activeFlowId.value });
   newNote.value = "";
   await loadNotes();
 };
-
-// Deletar Nota
 const deleteNote = async (id) => {
   await db.notes.delete(id);
   await loadNotes();
 };
 
-// Carregar Spaces quando o username mudar
-watch(username, loadSpaces);
-
-
-const timelineClicked = ref(false);
-const navClicked = ref(false);
-
+// Exibição
 const activateTimeline = () => {
   timelineClicked.value = true;
   navClicked.value = true;
   timeline.value = false;
   movedT.value = false;
 };
+const showMessage = () => {
+  if (!welcomeVisible.value && loginUsername.value.trim()) {
+    welcomeVisible.value = true;
+    setTimeout(() => {
+      moved.value = true;
+      movedT.value = true;
+    }, 3000);
+    setTimeout(() => {
+      timeline.value = true;
+      newCard.value = true;
+    }, 3500);
+  }
+};
+function timeLine () {
+  welcomeVisible.value = false;
+  setTimeout(() => {
+    timeline.value = false;
+  }, 3500);
+}
+const getGreetingMessage = () => {
+  const now = new Date();
+  const hour = now.getHours();
+  if (hour < 12) return "Bom dia";
+  if (hour < 18) return "Boa tarde";
+  return "Boa noite";
+};
+const greetingMessage = computed(() => getGreetingMessage());
 
-  const showMessage = () => {
-    if (!welcomeVisible.value && username.value.trim()) {
-      welcomeVisible.value = true;
-      setTimeout(() => {
-        moved.value = true;
-        movedT.value = true;
-      }, 3000);
-      setTimeout(() => {
-        timeline.value = true;
-        newCard.value = true;
-      }, 3500);
-    }
-  };
+// Reação ao username
+watch(username, loadSpaces);
+</script>
 
-  function timeLine () {
-    welcomeVisible.value = false;
-      setTimeout(() => {
-        timeline.value = false;
-      }, 3500);
-    };
 
-  
-  const getGreetingMessage = () => {
-    const now = new Date();
-    const hour = now.getHours();
+<template>
+    <!-- TELA DE LOGIN -->
+     
+  <div v-if="!isLoggedIn" class="login-box">
 
-    if (hour < 12) {
-      return "Bom dia";
-    } else if (hour < 18) {
-      return "Boa tarde";
-    } else {
-      return "Boa noite";
-    }
-  };
+    <div class="nav" :class="{ showNav: navClicked }">
 
-  const greetingMessage = computed(() => getGreetingMessage());
-  </script>
+      <nav>
+        <NuxtLink class="login">{{ localTime }}</NuxtLink>
+      </nav>
 
-  <template>
+    </div>
+
+    <header>
+
+      <div class="logo" v-if="!welcomeVisible">
+          
+        <h1 v-if="!moved">Hydriun - Os</h1>
+        
+        <div v-if="!isLoggedIn && !moved && !loading" class="login-box">
+          <input class="arrow" v-model="loginUsername" placeholder="Usuário" /><br>
+          <input v-if="!moved" @keyup.enter="login" class="arrow" v-model="loginPassword" type="password" placeholder="Senha" />
+        </div>
+        
+        <p style="color:red; margin: -40px 0 40px 0">{{ loginError }}</p>
+        <button v-if='registerBtn' class="btn-register" @click="register">Clique aqui, para Cadastrar</button>
+      </div>
+
+    </header>
+
+</div>  
+<!-- FIM DA TELA DE LOGIN-->
+
+<!-- SISTEMA APÓS LOGIN -->
+<div v-if="!loading && !isLoggedIn">
   <div class="nav" :class="{ showNav: navClicked }">
     <nav>
       <NuxtLink class="login">{{ localTime }}</NuxtLink>
+      <button @click="logout">Sair</button>
     </nav>
   </div>
 
-  <header>
-    <div class="logo" v-if="!welcomeVisible">
-      <h1 v-if="!moved">Hydriun</h1>
-      <NuxtLink>
-        <input
-          v-if="!moved"
-          type="text"
-          class="arrow"
-          placeholder="Qual o seu nome?"
-          v-model="username"
-          @keyup.enter="showMessage"
-        />
-      </NuxtLink>
-    </div>
-  </header>
+  
+    <transition name="fade">
+      <div v-if="welcomeVisible" class="welcome-message" :class="{ moveUp: moved }">
+        <p v-if="!moved">{{ greetingMessage }}, {{ username }}!</p>
 
-  <transition name="fade">
-    <div v-if="welcomeVisible" class="welcome-message" :class="{ moveUp: moved }">
-      <p v-if="!moved">{{ greetingMessage }}, {{ username }}!</p>
-
-      <p class="blue" v-if="movedT">{{ greetingMessage }}, {{ username }}!</p>
-      <p v-if="moved" :class="{ 'desire-top': timelineClicked }">
-        <input
-          v-if="flowT" 
-          type="text"
-          class="desire"
-          placeholder="O que você deseja fazer?"
-          v-model="desire"
-        />
-        <h2 v-else class="desire">{{ nameSpace }}</h2>
-      </p>
-      <p v-if="flowT" :class="{ 'desire-top': timelineClicked }">
-      </p>
-      <div v-if="newCard" class='spaces'>
-        <div class="card" @click="newSpace"><Icon name="ic:twotone-add" /> Criar space</div>
-      </div>
-      <br>
-      <h2 v-if="newCard">Spaces</h2>
-      <div v-if="newCard" class='spaces'>
-        <div class="spaces">
-          <div  class="card" v-for="space in spaces" :key="space.id" @click="selectSpace(space)">
-            {{ space.name }}
-            <button class="button" @click="deleteSpace(space.id)">x</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="flows" v-if="activeSpaceId">
-        <button @click="newFlow(activeSpaceId)">+ Criar Flow</button>
-        <div v-for="flow in flows" :key="flow.id" @click="selectFlow(flow)">
-          {{ flow.name }}
-        </div>
-        <div class="notes" v-if="activeFlowId">
-        <h2>Notas de {{ nameFlow }}</h2>
-        <input type="text" v-model="newNote" placeholder="Digite uma nota..." @keyup.enter="addNote" />
-        <ul>
-          <li v-for="note in notes" :key="note.id">
-            {{ note.text }}
-            <button @click="deleteNote(note.id)">Excluir</button>
-          </li>
-        </ul>
-      </div>
-      </div>
-
-
-
-      <div class="divv">
-
-        <div v-if="flow" class="button-square-plus"><div class="btn"> + flow</div></div>
-        <div v-if="flow" class="button-square">
-          <div v-for="flow in flows" :key="flow.id" class="btn-plus">
-            {{ nameFlow }}
-          </div>
-        </div>
-        
-        
-</div>
-      <transition name="fadetwo">
-        <p v-if="timeline" @click="activateTimeline" class="fixed">
-          <Icon name="ic:sharp-arrow-downward" />Linha do tempo
+        <p class="blue" v-if="movedT">{{ greetingMessage }}, {{ username }}!</p>
+        <p v-if="moved" :class="{ 'desire-top': timelineClicked }">
+          <input
+            v-if="flowT"
+            type="text"
+            class="desire"
+            placeholder="O que você deseja fazer?"
+            v-model="desire"
+          />
+          <h2 v-else class="desire">{{ nameSpace }}</h2>
         </p>
-      </transition>
-    </div>
-  </transition>
-</template>
 
+        <div v-if="newCard" class='spaces'>
+          <div class="card" @click="newSpace">+ Criar Space</div>
+        </div>
+        <br>
+
+        <h2 v-if="newCard">Spaces</h2>
+        <div v-if="newCard" class="spaces">
+          <div class="card" v-for="space in spaces" :key="space.id" @click="selectSpace(space)">
+            {{ space.name }}
+            <button class="button" @click.stop="deleteSpace(space.id)">x</button>
+          </div>
+        </div>
+
+        <div class="flows" v-if="activeSpaceId">
+          <button @click="newFlow(activeSpaceId)">+ Criar Flow</button>
+          <div v-for="flow in flows" :key="flow.id" @click="selectFlow(flow)">
+            {{ flow.name }}
+          </div>
+
+          <div class="notes" v-if="activeFlowId">
+            <h2>Notas de {{ nameFlow }}</h2>
+            <textarea type="text" v-model="newNote" placeholder="Digite uma nota..." @keyup.ctrl.enter="addNote" />
+            <ul>
+              <li v-for="note in notes" :key="note.id">
+                <div v-html="md.render(note.text)"></div>
+                <button @click="deleteNote(note.id)">Excluir</button>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+
+        <transition name="fadetwo">
+          <p v-if="timeline" @click="activateTimeline" class="fixed">
+            <Icon name="ic:sharp-arrow-downward" /> Linha do tempo
+          </p>
+        </transition>
+      </div>
+    </transition>
+  </div>
+</template>
 
 <style scoped>
 .body {
@@ -354,7 +417,7 @@ const activateTimeline = () => {
 
 
   .nav {
-    font-family: 'Nirequa';
+    font-family: 'naston-regular';
     width: 100%;
     font-size: 12px;
     text-align: center;
@@ -485,6 +548,23 @@ const activateTimeline = () => {
     position: relative;
     top: -85px;
     right: -95px;
+  }
+
+  .btn-register {
+        display: block;
+    /* margin: 10px 0; */
+    /* padding: 8px; */
+    color: #20a9b2;
+    text-transform: uppercase;
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    opacity:.8;
+  }
+
+  .btn-register:hover {
+    opacity:1;
   }
 
   .btn {
