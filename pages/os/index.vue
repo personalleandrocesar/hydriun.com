@@ -10,21 +10,19 @@ useHead({ titleTemplate: 'Hydriun Os' });
 const localTime = ref(new Date().toLocaleTimeString());
 let interval = null;
 
-onMounted(async () => {
+
+
+onMounted(() => {
+  interval = setInterval(() => {
+    localTime.value = new Date().toLocaleTimeString();
+  }, 1000);
+
   const savedUser = localStorage.getItem("hydriunUser");
   if (savedUser) {
     username.value = savedUser;
     isLoggedIn.value = true;
-    await loadSpaces(); // Espera carregar os spaces
-
-    if (spaces.value.length > 0) {
-      const firstSpace = spaces.value[0];
-      activeSpaceId.value = firstSpace.id;
-      nameSpace.value = firstSpace.name;
-      await loadFlows(); // Carrega flows e notas do primeiro
-    }
+    loadSpaces();
   }
-  loading.value = false;
 
   if (!welcomeVisible.value && username.value.trim()) {
     welcomeVisible.value = true;
@@ -38,8 +36,6 @@ onMounted(async () => {
     }, 3500);
   }
 });
-
-
 onBeforeUnmount(() => clearInterval(interval));
 
 // Banco de dados
@@ -269,7 +265,6 @@ watch(username, loadSpaces);
 
 <template>
     <!-- TELA DE LOGIN -->
-     
   <div v-if="!isLoggedIn" class="login-box">
 
     <div class="nav" :class="{ showNav: navClicked }">
@@ -286,7 +281,7 @@ watch(username, loadSpaces);
           
         <h1 v-if="!moved">Hydriun - Os</h1>
         
-        <div v-if="!isLoggedIn && !moved && !loading" class="login-box">
+        <div v-if="!isLoggedIn && !moved" class="login-box">
           <input class="arrow" v-model="loginUsername" placeholder="Usuário" /><br>
           <input v-if="!moved" @keyup.enter="login" class="arrow" v-model="loginPassword" type="password" placeholder="Senha" />
         </div>
@@ -301,7 +296,7 @@ watch(username, loadSpaces);
 <!-- FIM DA TELA DE LOGIN-->
 
 <!-- SISTEMA APÓS LOGIN -->
-<div v-if="!loading && !isLoggedIn">
+<div v-if="isLoggedIn">
   <div class="nav" :class="{ showNav: navClicked }">
     <nav>
       <NuxtLink class="login">{{ localTime }}</NuxtLink>
