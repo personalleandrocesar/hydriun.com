@@ -8,6 +8,12 @@ useHead({ titleTemplate: 'Hydriun Os' });
 
 // Relógio
 const localTime = ref(new Date().toLocaleTimeString());
+const date = ref(
+  new Date().toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: 'short'
+  })
+)
 let interval = null;
 
 onMounted(() => {
@@ -87,6 +93,9 @@ const register = async () => {
   const existing = await db.users.get(loginUsername.value);
   if (existing) {
     loginError.value = "Usuário já existe";
+    setTimeout(() => {
+      loginError.value = '';
+    },5000)
     return;
   }
   await db.users.add({
@@ -235,6 +244,7 @@ const activateTimeline = () => {
   timeline.value = false;
   movedT.value = false;
 };
+
 const showMessage = () => {
   if (!welcomeVisible.value && loginUsername.value.trim()) {
     welcomeVisible.value = true;
@@ -304,9 +314,9 @@ watch(username, loadSpaces);
 <div v-if="isLoggedIn">
   <div class="nav" :class="{ showNav: navClicked }">
     <nav>
-      <NuxtLink class="login">{{ localTime }}</NuxtLink>
-      <button @click="logout">Sair</button>
+      <NuxtLink class="login">{{ date }}  {{ localTime }}</NuxtLink>
     </nav>
+      <Icon @click='logout' class="logout" name="iconoir:log-out" />
   </div>
 
   
@@ -423,7 +433,7 @@ watch(username, loadSpaces);
     text-align: center;
     padding: 15px 0 ;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-evenly;
     position: fixed;
     top: 0px;
     -webkit-backdrop-filter: blur(10px);
@@ -461,6 +471,27 @@ watch(username, loadSpaces);
   nav a:first-of-type {
     border: 0;
   }
+  
+  .logout {
+      font-family: 'naston-regular';
+      zoom: 12;
+      text-align: center;
+      display: flex;
+      position: fixed;
+      top: 25px;
+      right: 1%;
+      z-index: 2;
+      transition: all 0.4s linear;
+  }
+  
+  .icon {
+      zoom: .5;
+  }
+  
+  .logout:hover {
+    color: #20a9b2;
+  }
+  
   container {
     max-width: 400px;
     margin: auto;
@@ -541,7 +572,7 @@ watch(username, loadSpaces);
         display: block;
     /* margin: 10px 0; */
     /* padding: 8px; */
-    background-color: #007bff;
+    background-color: #aaa;
     color: white;
     border: none;
     cursor: pointer;
@@ -551,7 +582,7 @@ watch(username, loadSpaces);
     right: -95px;
   }
   
-  button:hover{
+  .button:hover{
     background-color: #ff1900;
     transition: all 0.4s linear;
   }
@@ -612,9 +643,7 @@ watch(username, loadSpaces);
   animation: clicktop .5s linear;
   }
 
-  .icon {
-      zoom: .4;
-  }
+  
 
   .fixed {
       position: fixed;
@@ -684,6 +713,7 @@ watch(username, loadSpaces);
 
   .desire {
   margin-bottom: 34px;
+  margin-top: 5px;
   height: 60px;
   width: auto;
   zoom: 0.7;
