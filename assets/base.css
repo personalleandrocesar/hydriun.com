@@ -3,7 +3,9 @@
 /* WHITE */
 :root {
   --vt-c-white: #c7cad0;
+  /* 
   --vt-c-white: linear-gradient(to bottom right, #c7cad0 0%,#20a9b250 50%,#c7cad0 100%);
+  */
   --vt-c-white-soft: #ddddddcc;
   --vt-c-white-mute: #a3a9b126;
   --vt-c-divider-light-1: var(--vt-c-white-soft);

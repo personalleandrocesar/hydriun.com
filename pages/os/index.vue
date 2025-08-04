@@ -219,8 +219,23 @@ const newFlow = async (spaceId) => {
 const selectSpace = async (space) => {
   activeSpaceId.value = space.id;
   nameSpace.value = space.name;
+  newCard.value = false;
+  movedT.value = false;
+  flowT.value = false;
+  timelineClicked.value = true;
+
   await loadFlows();
 };
+
+const nullSpace = async (space) => {
+  activeSpaceId.value = '';
+  nameSpace.value = '';
+  await loadFlows();
+  newCard.value = true;
+  timeline.value = true;
+  flowT.value = true;
+}
+
 const selectFlow = async (flow) => {
   activeFlowId.value = flow.id;
   nameFlow.value = flow.name;
@@ -333,26 +348,46 @@ watch(username, loadSpaces);
             placeholder="O que você deseja fazer?"
             v-model="desire"
           />
-          <h2 v-else class="desire">{{ nameSpace }}</h2>
+          <h2 v-else class="namespace">{{ nameSpace }}</h2>
         </p>
-
         <div v-if="newCard" class='spaces'>
           <div class="card" @click="newSpace">+ Criar Space</div>
         </div>
         <br>
 
         <h2 v-if="newCard">Spaces</h2>
-        <div v-if="newCard" class="spaces">
+        <div v-if="newCard" class="spaces intern">
           <div class="card" v-for="space in spaces" :key="space.id" @click="selectSpace(space)">
             {{ space.name }}
             <button class="button" @click.stop="deleteSpace(space.id)">x</button>
           </div>
+          <transition name="fadetwo">
+            <p v-if="timeline" @click="activateTimeline" class="fixed">
+              <Icon name="ic:sharp-arrow-downward" /> Linha do tempo
+            </p>
+          </transition>
         </div>
+        
+        <!-- Dentro do Space recém criado-->
+        <div v-if="activeSpaceId">
+          <transition name="fadetwo">
+          <p class="fixed" @click='nullSpace'>
+            <Icon name="ic:sharp-arrow-back" /> Voltar para Spaces
+          </p>
+        </transition> 
 
-        <div class="flows" v-if="activeSpaceId">
-          <button @click="newFlow(activeSpaceId)">+ Criar Flow</button>
-          <div v-for="flow in flows" :key="flow.id" @click="selectFlow(flow)">
-            {{ flow.name }}
+
+        <!-- Área interna do Flow-->
+        <div class="flow-div">   
+
+          <div>
+
+            
+          <div class="card-flow-new" @click="newFlow(activeSpaceId)">+ Criar Flow</div>
+          <h2 v-if="flowT" class="namespace" :class="{ 'desire-top': timelineClicked }">{{ nameSpace }}</h2>
+            <div class="card-flow" v-for="flow in flows" :key="flow.id" @click="selectFlow(flow)">
+              {{ flow.name }}
+            </div>
           </div>
 
           <div class="notes" v-if="activeFlowId">
@@ -367,12 +402,8 @@ watch(username, loadSpaces);
 
           </div>
         </div>
+      </div>
 
-        <transition name="fadetwo">
-          <p v-if="timeline" @click="activateTimeline" class="fixed">
-            <Icon name="ic:sharp-arrow-downward" /> Linha do tempo
-          </p>
-        </transition>
       </div>
     </transition>
   </div>
@@ -383,14 +414,17 @@ watch(username, loadSpaces);
   overflow-x: auto;
   width: 100px;
 }
+
 .spaces {
   display: flex;
-  gap: 20px;
+  gap: 10px;
+  flex-wrap:wrap;
 }
 
-.spaces:nth-child(2) {
+.intern {
   width: 100%;
-    overflow-x: auto;
+  overflow-x: auto;
+margin-bottom: 80px;
 }
 
 
@@ -438,7 +472,6 @@ watch(username, loadSpaces);
     top: 0px;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    z-index: 2;
     transition: background 0.3s ease-in-out;
     /* background: linear-gradient(to bottom right, #20a9b210 0%,#20a9b210 50%,#20a9b230 100%); */
   }
@@ -486,6 +519,7 @@ watch(username, loadSpaces);
   
   .icon {
       zoom: .5;
+      color: #999;
   }
   
   .logout:hover {
@@ -552,7 +586,7 @@ watch(username, loadSpaces);
 
   .card {
     height: 150px;
-    width: 200px;
+    width: 210px;
     border-radius: 20px;
     background: #20a9b220;
     display: flex;
@@ -560,6 +594,7 @@ watch(username, loadSpaces);
     justify-content: center;
     align-items: center;
     transition: all 0.5s ease-in-out;
+    margin-top: 15px;
   }
 
   .card:hover {
@@ -567,6 +602,52 @@ watch(username, loadSpaces);
     cursor:pointer;
     color: #333;
   }
+
+  .card-flow-new {
+    height: 40px;
+    padding-top: 4px;
+    width: 200px;
+    border-radius: 10px;
+    background: #20a9b280;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .card-flow-new:hover {
+    background: #20a9b2;
+    cursor:pointer;
+    color: #333;
+  }
+
+  .card-flow {
+    height: 40px;
+    padding-top: 4px;
+    width: 200px;
+    margin-top: 15px;
+    border-radius: 10px;
+    background: #20a9b210;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .card-flow:hover{
+    background: #20a9b230;
+    cursor:pointer;
+    color: #333;
+  }
+
+  .flow-div {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 5fr;
+  }
+
 
   .button{
         display: block;
@@ -624,6 +705,7 @@ watch(username, loadSpaces);
     justify-content: center;
     align-items: center;
   }
+
   .button-square-plus{
     position: absolute;
   top: 100px;
@@ -633,6 +715,7 @@ watch(username, loadSpaces);
   transform: translateY(-40px);
   animation: clicktop .5s linear;
   }
+
   .button-square{
     position: absolute;
   top: 155px;
@@ -648,6 +731,12 @@ watch(username, loadSpaces);
   .fixed {
       position: fixed;
       Bottom: 30px;
+      backdrop-filter: blur(10px);
+    z-index: 200;
+    cursor: pointer;
+    padding: 3px 25px;
+    background: linear-gradient(to bottom right, #20a9b210 0%,#20a9b210 50%,#20a9b230 100%);
+    border-radius: 15px;
   }
 
   .fade-enter-active, .fade-leave-active {
@@ -711,7 +800,7 @@ watch(username, loadSpaces);
   font-size: 2rem;
   }
 
-  .desire {
+    .namespace {
   margin-bottom: 34px;
   margin-top: 5px;
   height: 60px;
@@ -721,6 +810,24 @@ watch(username, loadSpaces);
   border: none;
   background: transparent;
   font-size: 2rem;
+  position: relative;
+  z-index:2002;
+  top:0;
+  }
+
+  .desire {
+  margin-bottom: 34px;
+  margin-top: 0px;
+  height: 60px;
+  width: auto;
+  zoom: 0.7;
+  color: var(--color-text);
+  border: none;
+  background: transparent;
+  font-size: 2rem;
+  position: relative;
+  z-index:2002;
+  top:0;
   }
 
   .desire input::placeholder {
