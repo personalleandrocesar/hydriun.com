@@ -204,6 +204,7 @@ const deleteSpace = async (spaceId) => {
     notes.value = [];
   }
 };
+
 const newFlow = async (spaceId) => {
   if (!username.value.trim() || spaceId === null) return;
 
@@ -216,6 +217,7 @@ const newFlow = async (spaceId) => {
   nameFlow.value = flowName;
   await loadNotes();
 };
+
 const selectSpace = async (space) => {
   activeSpaceId.value = space.id;
   nameSpace.value = space.name;
