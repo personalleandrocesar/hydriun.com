@@ -331,7 +331,8 @@ watch(username, loadSpaces);
     <nav>
       <NuxtLink class="login">{{ date }}  {{ localTime }}</NuxtLink>
     </nav>
-      <Icon @click='logout' class="logout" name="iconoir:log-out" />
+    <span class='logout'></span>
+      <svg @click='logout' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 8V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-2"/><path d="M15 12H3l3-3m0 6l-3-3"/></g></svg>
   </div>
 
   
@@ -504,14 +505,14 @@ margin-bottom: 80px;
     border: 0;
   }
   
-  .logout {
+  svg{
       font-family: 'naston-regular';
-      zoom: 12;
+      zoom: .8;
       text-align: center;
       display: flex;
       position: fixed;
-      top: 25px;
-      right: 1%;
+      top: 20px;
+      right: 2%;
       z-index: 2;
       transition: all 0.4s linear;
   }
@@ -856,6 +857,15 @@ margin-bottom: 80px;
   align-items: center;
   justify-content: center;
         color: var(--color-detail);
+  }
+  @media(max-width: 410px) {
+    h1{
+      font-size:1.4rem;
+    }
+    .arrow {
+      font-size: 1.1rem;
+      width: 250px;
+    }
   }
 
   h3{
