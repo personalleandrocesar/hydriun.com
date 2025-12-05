@@ -1,8 +1,6 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue';
 import Dexie from 'dexie';
-import MarkdownIt from 'markdown-it';
-const md = new MarkdownIt();
 // Head
 useHead({ titleTemplate: 'Hydriun Os' });
 
@@ -397,7 +395,6 @@ watch(username, loadSpaces);
             <textarea type="text" v-model="newNote" placeholder="Digite uma nota..." @keyup.ctrl.enter="addNote" />
             <ul>
               <li v-for="note in notes" :key="note.id">
-                <div v-html="md.render(note.text)"></div>
                 <button @click="deleteNote(note.id)">Excluir</button>
               </li>
             </ul>
