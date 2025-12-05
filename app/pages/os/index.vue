@@ -860,11 +860,12 @@ margin-bottom: 80px;
   }
   @media(max-width: 410px) {
     h1{
-      font-size:1.4rem;
+      font-size:1.5rem;
+      height: 20vh;
     }
     .arrow {
-      font-size: 1.1rem;
-      width: 250px;
+      font-size: 1.3rem;
+      width: 300px;
     }
   }
 
