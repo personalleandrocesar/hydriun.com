@@ -14,7 +14,7 @@ useHead({
     
         <h1 class=''>Hydriun</h1>
         <NuxtLink :to="{path:'/', hash: '#websites'}" class="animate">
-      <svg @click='logout' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 8V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-2"/><path d="M15 12H3l3-3m0 6l-3-3"/></g></svg>
+         <svg class='arrow' @click='logout' xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Material Symbols Light by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M11.998 20.92q-.16 0-.296-.057t-.267-.186l-5.427-5.421q-.14-.14-.15-.344t.13-.35q.146-.166.357-.156q.21.01.357.156l4.798 4.784V12.73q0-.213.144-.356t.357-.144t.356.144t.143.356v6.637l4.823-4.804q.136-.14.339-.14t.353.145q.137.134.137.341t-.14.348l-5.446 5.421q-.132.13-.27.187t-.298.055m.001-10.69q-.213 0-.356-.144T11.5 9.73v-2q0-.213.144-.357t.357-.143t.356.143t.143.357v2.019q0 .205-.144.343t-.357.138m0-5q-.213 0-.356-.144T11.5 4.73v-1q0-.213.144-.356t.357-.144t.356.144t.143.356v1.019q0 .205-.144.343t-.357.138"/></svg>
         </NuxtLink>
 
     </div>
@@ -56,7 +56,6 @@ margin: 0 auto 80px auto;
 }
 
 .ani {
-    
 animation: updown 3s ease infinite;
 }
 
@@ -66,7 +65,7 @@ margin-bottom: 64px;
 -webkit-animation: updown 3s ease infinite;
 animation: updown 3s ease infinite;
 height: 60px;
-zoom: 0.7;
+zoom: 1;
 color: var(--color-detail);
 }
 
